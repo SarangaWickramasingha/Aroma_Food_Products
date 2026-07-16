@@ -1,7 +1,7 @@
 const SlideInfo = ({ product }) => {
   const {
-    stampText = "",
-    stampBg = "#e8d5b0",
+    sideText ="",
+    circleColor = "#e8d5b0",
     stampTextColor = "#2c1a0e",
     cardBg = "#fffdf7",
     titleColor = "#1a1008",
@@ -17,8 +17,8 @@ const SlideInfo = ({ product }) => {
     >
       {/* ── Circular Stamp with Heart ── */}
       <CircleStamp
-        text={stampText}
-        stampBg={stampBg}
+        text={sideText}
+        circleColor={circleColor}
         stampTextColor={stampTextColor}
       />
 
@@ -43,7 +43,7 @@ const SlideInfo = ({ product }) => {
   );
 };
 
-const CircleStamp = ({ text, stampBg, stampTextColor }) => {
+const CircleStamp = ({ text, circleColor, stampTextColor }) => {
 
   const fullText = `${text} ${text}`;
 
@@ -57,7 +57,7 @@ const CircleStamp = ({ text, stampBg, stampTextColor }) => {
         aria-label="Product stamp"
       >
         {/* Circle background */}
-        <circle cx="44" cy="44" r="40" fill={stampBg} />
+        <circle cx="44" cy="44" r="40" fill={circleColor} />
 
         {/* Curved text path */}
         <defs>

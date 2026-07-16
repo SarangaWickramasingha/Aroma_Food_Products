@@ -13,7 +13,7 @@ const Pdetails = [
     ],
     sideText: "Coffee Powder · First Choice ·",
     sideNote: "Experience the essence of premium coffee made for everyday moments. Roasted to perfection, our blend captures deep flavor notes with a silky finish. It's not just coffee—it's your daily ritual.",
-    bg: "#f5f0e8",
+    bg: "var(--color-coffee-bg)",
     cardBg: "#fffdf7",
     accent: "#2c1a0e",
     badge: "#2c1a0e",
