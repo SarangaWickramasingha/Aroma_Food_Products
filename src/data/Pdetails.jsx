@@ -40,7 +40,7 @@ const Pdetails = [
     ],
     sideText: "Spicy Loco Chips · Hot & Crispy ·",
     sideNote: "Snack smarter with our crispy cassava chips. Naturally gluten-free and packed with flavor, each bite delivers a satisfying crunch with just the right level of spice to keep you coming back for more.",
-    bg: "#fef1f0",
+    bg: "var(--color-chips-bg)",
     cardBg: "#fde8e6",
     accent: "#b01a10",
     badge: "#b01a10",

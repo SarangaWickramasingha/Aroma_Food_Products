@@ -4,3 +4,10 @@
   --color-brand-red: #C44A3A;
   --color-coffee-bg: #f5f0e8;
 }
+.swiper-pagination-bullet-active {
+  background: #b01a10; /* your accent */
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #2c1a0e;
+}
