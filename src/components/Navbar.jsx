@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import NavItem from './NavItem';
+import Logo from './Logo';
 
 const Navbar = ({
   scrollToHome,
@@ -46,19 +47,10 @@ const Navbar = ({
         {/* Brand Logo */}
         <button
           onClick={() => handleNav(scrollToHome)}
-          className="group flex items-center gap-3 text-left focus:outline-none cursor-pointer"
+          className="group flex items-center text-left focus:outline-none cursor-pointer"
+          aria-label="Aroma Food Products — go to top"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-brand-red to-brand-amber text-white shadow-lg transition-transform duration-300 group-hover:scale-105">
-            <span className="text-xl font-bold font-serif">A</span>
-          </div>
-          <div>
-            <span className="block text-[22px] font-extrabold tracking-[0.28em] text-white font-serif drop-shadow-md">
-              AROMA
-            </span>
-            <span className="block text-[9px] font-semibold uppercase tracking-[0.35em] text-gold-soft -mt-1">
-              Food Products
-            </span>
-          </div>
+          <Logo className="transition-transform duration-300 group-hover:scale-[1.03] origin-left" />
         </button>
 
         {/* Desktop Nav Items */}
