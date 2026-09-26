@@ -1,9 +1,21 @@
-
-function NavItem({title,scoll}){ 
-    return(
-        <li className="relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-700 hover:after:w-full ">
-            <button onClick={scoll}>{title}</button>
-        </li>
-    )
+function NavItem({ title, scoll, isActive = false, className = "" }) {
+  return (
+    <li className="relative">
+      <button
+        onClick={scoll}
+        className={`group relative py-1 text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer ${
+          isActive
+            ? "text-gold-soft drop-shadow-[0_2px_8px_rgba(232,213,176,0.3)]"
+            : "text-white/80 hover:text-white"
+        } ${className}`}
+      >
+        {title}
+        <span
+          className={`nav-underline ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+        />
+      </button>
+    </li>
+  );
 }
+
 export default NavItem;

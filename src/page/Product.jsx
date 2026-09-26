@@ -1,60 +1,62 @@
 import { forwardRef } from "react";
 import ProductImg from "../components/ProductImg";
 import SlideInfo from "../components/SideInfo";
-import Pdetails from "../data/Pdetails" 
+import Pdetails from "../data/Pdetails";
 import Description from "../components/Description";
-import cfepacket from '../assets/coffee-packet.png'
-import chpbox from '../assets/chipsbox.png'
-
 
 const Product = forwardRef(({ Storypage }, ref) => {
+  // Always display only the Coffee product on the site
+  const coffeeProduct = Pdetails.find((p) => p.id === "coffee") || Pdetails[0];
+
   return (
-    <section ref={ref} style={{ height: "100vh", background: "#d0e8ff" }}>
-      <div className="h-20 flex items-center justify-around">
-        Button
-      </div>
-
-      <div className="flex justify-between px-10">
-        <div>
-          <SlideInfo product={Pdetails[0]} />
-        </div>
-        
-        <div>
-
-            <Description 
-            header={Pdetails[0].tagline}
-            
-            des={Pdetails[0].description}
-            
-            btn={Storypage}
-            theam="dark" 
-            /> 
-
-          <ProductImg image={cfepacket} />
-
+    <section
+      id="product"
+      ref={ref}
+      className="flex min-h-screen flex-col items-center justify-center px-6 py-20 transition-colors duration-700 sm:px-10 lg:px-16"
+      style={{ backgroundColor: coffeeProduct.bg }}
+    >
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Section Header & Subtitle */}
+        <div className="mb-14 text-center">
+          <p className="eyebrow text-brand-red">
+            Pure Ceylon Specialty Roast
+          </p>
+          <h2 className="mt-2 heading-serif font-extrabold text-3xl sm:text-4xl md:text-5xl text-espresso-900">
+            Our Signature Coffee
+          </h2>
+          <div className="divider-bar mx-auto mt-3 rounded-full" />
         </div>
 
-      </div>
-            <div className="flex justify-between px-10">
-        <div>
-          <SlideInfo product={Pdetails[1]} />
+        {/* Product Content Display Grid */}
+        <div className="flex w-full flex-col items-center justify-between gap-12 lg:flex-row lg:items-center lg:gap-14">
+          {/* Left: Interactive Specs & Stats Card */}
+          <div className="fade-slide-in flex w-full justify-center lg:w-[38%]">
+            <SlideInfo product={coffeeProduct} />
+          </div>
+
+          {/* Right: Headline, Description & Dynamic Product Mockup */}
+          <div className="fade-slide-in flex w-full flex-col items-center gap-8 lg:w-[58%] lg:items-start">
+            <div className="w-full text-left">
+              <Description
+                header={coffeeProduct.tagline}
+                des={coffeeProduct.description}
+                btn={Storypage}
+                btnText="Discover The Craft Story"
+                theam="dark"
+                label={coffeeProduct.category}
+                packSizes={coffeeProduct.packSizes}
+              />
+            </div>
+
+            <div className="w-full flex justify-center lg:justify-start">
+              <ProductImg
+                image={coffeeProduct.productImage}
+                alt={coffeeProduct.imageAlt}
+                badge="Highland Estate • Single Origin"
+              />
+            </div>
+          </div>
         </div>
-        
-        <div>
-
-            <Description 
-            header={Pdetails[1].tagline}
-            
-            des={Pdetails[1].description}
-            
-            btn={Storypage}
-            theam="dark" 
-            /> 
-
-          <ProductImg image={chpbox} />
-
-        </div>
-
       </div>
     </section>
   );

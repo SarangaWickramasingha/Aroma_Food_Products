@@ -1,63 +1,54 @@
+import { Heart } from "lucide-react";
+
 const SlideInfo = ({ product }) => {
   const {
-    stampText = "",
-    stampBg = "#e8d5b0",
+    sideText = "",
+    circleColor = "#e8d5b0",
     stampTextColor = "#2c1a0e",
     cardBg = "#fffdf7",
     titleColor = "#1a1008",
     sideNote = "",
-    stats = [],
   } = product;
 
   return (
     <div
-      className="rounded-2xl p-6 flex flex-col gap-5 w-106.25 h-168 shadow-sm border
-      "
+      className="flex w-full max-w-[420px] flex-col gap-6 rounded-3xl border border-black/5 p-6 shadow-md sm:p-8"
       style={{ backgroundColor: cardBg }}
     >
       {/* ── Circular Stamp with Heart ── */}
       <CircleStamp
-        text={stampText}
-        stampBg={stampBg}
+        text={sideText}
+        circleColor={circleColor}
         stampTextColor={stampTextColor}
       />
 
       {/* ── Side Note ── */}
       <p
-        className="text-sm leading-relaxed font-serif text-[22px]"
+        className="font-serif text-[17px] leading-relaxed sm:text-[18px]"
         style={{ color: titleColor, opacity: 0.82 }}
       >
         {sideNote}
       </p>
-
-      {/* ── Stats Grid ── */}
-      <div className="grid grid-cols-2 gap-x-6 gap-y-4 mt-1">
-        {stats.map((s) => (
-          <div key={s.label} style={{ color: titleColor }}>
-            <p className="font-serif font-bold text-[32px] leading-none">{s.value}</p>
-            <p className="text-[22px] mt-1 leading-snug opacity-60">{s.label}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
 
-const CircleStamp = ({ text, stampBg, stampTextColor }) => {
+const CircleStamp = ({ text, circleColor, stampTextColor }) => {
 
   const fullText = `${text} ${text}`;
 
   return (
-    <div className="relative w-22 h-22 shrink-0">
+    <div className="relative h-[88px] w-[88px] shrink-0">
       <svg
         viewBox="0 0 88 88"
         width="88"
         height="88"
+        className="block"
         xmlns="http://www.w3.org/2000/svg"
         aria-label="Product stamp"
       >
         {/* Circle background */}
-        <circle cx="44" cy="44" r="40" fill={stampBg} />
+        <circle cx="44" cy="44" r="40" fill={circleColor} />
 
         {/* Curved text path */}
         <defs>
@@ -79,25 +70,18 @@ const CircleStamp = ({ text, stampBg, stampTextColor }) => {
             {fullText}
           </textPath>
         </text>
-
-        {/* Heart icon in center */}
-        <text
-          x="44"
-          y="50"
-          textAnchor="middle"
-          style={{
-            fontSize: "22px",
-            fill: stampTextColor,
-            fontFamily: "serif",
-          }}
-        >
-          ♥
-        </text>
       </svg>
+
+      {/* Heart icon in center */}
+      <Heart
+        size={26}
+        color={stampTextColor}
+        fill={stampTextColor}
+        strokeWidth={2}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
     </div>
   );
 };
 
 export default SlideInfo;
-
-
