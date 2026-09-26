@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ArrowRight } from 'lucide-react';
 import NavItem from './NavItem';
 
 const Navbar = ({
@@ -14,11 +15,7 @@ const Navbar = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -29,11 +26,19 @@ const Navbar = ({
     fn?.();
   };
 
+  const mobileLinks = [
+    { title: 'Home', section: 'home', target: scrollToHome },
+    { title: 'Coffee Collection', section: 'product', target: scrollToProduct },
+    { title: 'Our Craft', section: 'story', target: scrollToStory },
+    { title: 'Journal', section: 'blog', target: scrollToBlog },
+    { title: 'Contact Us', section: 'contact', target: scrollToContact },
+  ];
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#1A1008]/90 backdrop-blur-md py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/10'
+          ? 'bg-espresso-900/90 backdrop-blur-md py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/10'
           : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5 sm:py-6'
       }`}
     >
@@ -43,14 +48,14 @@ const Navbar = ({
           onClick={() => handleNav(scrollToHome)}
           className="group flex items-center gap-3 text-left focus:outline-none cursor-pointer"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-[#C44A3A] to-[#E28834] text-white shadow-lg transition-transform duration-300 group-hover:scale-105">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-brand-red to-brand-amber text-white shadow-lg transition-transform duration-300 group-hover:scale-105">
             <span className="text-xl font-bold font-serif">A</span>
           </div>
           <div>
             <span className="block text-[22px] font-extrabold tracking-[0.28em] text-white font-serif drop-shadow-md">
               AROMA
             </span>
-            <span className="block text-[9px] font-semibold uppercase tracking-[0.35em] text-[#E8D5B0] -mt-1">
+            <span className="block text-[9px] font-semibold uppercase tracking-[0.35em] text-gold-soft -mt-1">
               Food Products
             </span>
           </div>
@@ -88,7 +93,7 @@ const Navbar = ({
 
           <button
             onClick={() => handleNav(scrollToContact)}
-            className="cursor-pointer rounded-full bg-[#C44A3A] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-[#A7382B] hover:shadow-lg hover:scale-105 focus:outline-none"
+            className="cursor-pointer rounded-full bg-brand-red px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-brand-red-hover hover:shadow-lg hover:scale-105 focus:outline-none"
           >
             Contact Us
           </button>
@@ -98,11 +103,11 @@ const Navbar = ({
         <div className="flex items-center gap-3 lg:hidden">
           <button
             onClick={() => handleNav(scrollToContact)}
-            className="cursor-pointer rounded-full bg-[#C44A3A] px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-md hover:bg-[#A7382B]"
+            className="cursor-pointer rounded-full bg-brand-red px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-red-hover"
           >
             Contact
           </button>
-          
+
           <button
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Toggle navigation menu"
@@ -130,52 +135,21 @@ const Navbar = ({
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="fade-slide-in mx-4 mt-3 flex flex-col gap-2 rounded-2xl border border-white/15 bg-[#1A1008]/95 p-5 text-white shadow-2xl backdrop-blur-2xl lg:hidden">
-          <button
-            onClick={() => handleNav(scrollToHome)}
-            className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
-              activeSection === 'home' ? 'bg-[#C44A3A]/20 text-[#E8D5B0] font-semibold' : 'hover:bg-white/10'
-            }`}
-          >
-            <span>Home</span>
-            <span>→</span>
-          </button>
-          <button
-            onClick={() => handleNav(scrollToProduct)}
-            className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
-              activeSection === 'product' ? 'bg-[#C44A3A]/20 text-[#E8D5B0] font-semibold' : 'hover:bg-white/10'
-            }`}
-          >
-            <span>Coffee Collection</span>
-            <span>→</span>
-          </button>
-          <button
-            onClick={() => handleNav(scrollToStory)}
-            className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
-              activeSection === 'story' ? 'bg-[#C44A3A]/20 text-[#E8D5B0] font-semibold' : 'hover:bg-white/10'
-            }`}
-          >
-            <span>Our Craft</span>
-            <span>→</span>
-          </button>
-          <button
-            onClick={() => handleNav(scrollToBlog)}
-            className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
-              activeSection === 'blog' ? 'bg-[#C44A3A]/20 text-[#E8D5B0] font-semibold' : 'hover:bg-white/10'
-            }`}
-          >
-            <span>Journal</span>
-            <span>→</span>
-          </button>
-          <button
-            onClick={() => handleNav(scrollToContact)}
-            className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
-              activeSection === 'contact' ? 'bg-[#C44A3A]/20 text-[#E8D5B0] font-semibold' : 'hover:bg-white/10'
-            }`}
-          >
-            <span>Contact Us</span>
-            <span>→</span>
-          </button>
+        <div className="fade-slide-in mx-4 mt-3 flex flex-col gap-2 rounded-2xl border border-white/15 bg-espresso-900/95 p-5 text-white shadow-2xl backdrop-blur-2xl lg:hidden">
+          {mobileLinks.map(({ title, section, target }) => (
+            <button
+              key={section}
+              onClick={() => handleNav(target)}
+              className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
+                activeSection === section
+                  ? 'bg-brand-red/20 text-gold-soft font-semibold'
+                  : 'hover:bg-white/10'
+              }`}
+            >
+              <span>{title}</span>
+              <ArrowRight size={16} />
+            </button>
+          ))}
         </div>
       )}
     </header>

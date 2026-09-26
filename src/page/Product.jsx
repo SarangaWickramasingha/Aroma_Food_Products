@@ -18,13 +18,13 @@ const Product = forwardRef(({ Storypage }, ref) => {
       <div className="mx-auto w-full max-w-7xl">
         {/* Section Header & Subtitle */}
         <div className="mb-14 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#C44A3A]">
+          <p className="eyebrow text-brand-red">
             Pure Ceylon Specialty Roast
           </p>
-          <h2 className="mt-2 font-serif text-3xl font-extrabold text-[#1A1008] sm:text-4xl md:text-5xl">
+          <h2 className="mt-2 heading-serif font-extrabold text-3xl sm:text-4xl md:text-5xl text-espresso-900">
             Our Signature Coffee
           </h2>
-          <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-[#C44A3A]" />
+          <div className="divider-bar mx-auto mt-3 rounded-full" />
         </div>
 
         {/* Product Content Display Grid */}

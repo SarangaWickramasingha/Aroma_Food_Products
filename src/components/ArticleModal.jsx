@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { X } from "lucide-react";
 
 const ArticleModal = ({ article, onClose }) => {
   useEffect(() => {
@@ -25,28 +26,28 @@ const ArticleModal = ({ article, onClose }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-[#FFFDF8] p-6 shadow-2xl sm:p-10 text-[#1A1008]"
+        className="card relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl p-6 shadow-2xl sm:p-10 text-espresso-900"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Close article modal"
-          className="absolute top-5 right-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/5 text-lg font-bold text-[#1A1008] transition hover:bg-[#C44A3A] hover:text-white"
+          className="absolute top-5 right-5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/5 transition hover:bg-brand-red hover:text-white"
         >
-          ✕
+          <X size={18} />
         </button>
 
         {/* Category & Read Time */}
-        <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-[#C44A3A]">
+        <div className="eyebrow flex items-center gap-3 text-brand-red">
           <span>{article.category || "Story"}</span>
           <span>•</span>
-          <span className="text-black/50">{article.readTime || "3 min read"}</span>
+          <span className="text-espresso-600">{article.readTime || "3 min read"}</span>
         </div>
 
         {/* Title */}
         <h2
           id="article-modal-title"
-          className="mt-3 font-serif text-2xl font-extrabold leading-snug sm:text-3xl"
+          className="heading-serif mt-3 text-2xl leading-snug sm:text-3xl"
         >
           {article.title}
         </h2>
@@ -61,8 +62,8 @@ const ArticleModal = ({ article, onClose }) => {
             />
           )}
           <div>
-            <p className="text-sm font-bold text-[#1A1008]">{article.author}</p>
-            <p className="text-xs text-black/50">{article.date} · {article.authorRole || "Aroma Team"}</p>
+            <p className="text-sm font-bold text-espresso-900">{article.author}</p>
+            <p className="text-xs text-espresso-600">{article.date} · {article.authorRole || "Aroma Team"}</p>
           </div>
         </div>
 
@@ -78,12 +79,12 @@ const ArticleModal = ({ article, onClose }) => {
         )}
 
         {/* Article Excerpt / Highlight */}
-        <div className="mt-6 rounded-2xl bg-[#C44A3A]/5 border-l-4 border-[#C44A3A] p-4 text-sm font-medium italic leading-relaxed text-[#2C1A0E]">
+        <div className="mt-6 rounded-2xl bg-brand-red/5 border-l-4 border-brand-red p-4 text-sm font-medium italic leading-relaxed text-espresso-800">
           "{article.excerpt}"
         </div>
 
         {/* Full Content */}
-        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-[#2C1A0E]/85">
+        <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-espresso-800/85">
           {article.fullContent ? (
             <div className="whitespace-pre-line prose prose-stone">
               {article.fullContent}
@@ -95,12 +96,12 @@ const ArticleModal = ({ article, onClose }) => {
 
         {/* Bottom CTA */}
         <div className="mt-8 flex items-center justify-between border-t border-black/10 pt-6">
-          <p className="text-xs font-semibold text-black/60">
+          <p className="text-xs font-semibold text-espresso-600">
             Enjoyed this read? Share with fellow food & coffee enthusiasts.
           </p>
           <button
             onClick={onClose}
-            className="rounded-full bg-[#2C1A0E] px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-[#C44A3A]"
+            className="rounded-full bg-espresso-800 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-red"
           >
             Back to Journal
           </button>

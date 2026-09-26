@@ -24,21 +24,21 @@ const Blog = forwardRef((props, ref) => {
     <section
       id="blog"
       ref={ref}
-      className="min-h-screen bg-[#F5F0E8] px-6 py-24 sm:px-10 lg:px-16"
+      className="min-h-screen bg-coffee-bg px-6 py-24 sm:px-10 lg:px-16"
     >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#C44A3A]">
+          <p className="eyebrow text-brand-red">
             Brewing Insights & Stories
           </p>
-          <h2 className="mt-2 font-serif text-3xl font-extrabold tracking-wide text-[#1A1008] sm:text-4xl md:text-5xl">
+          <h2 className="mt-2 heading-serif font-extrabold tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
             Aroma Journal & Recipes
           </h2>
-          <p className="mt-3 text-sm text-[#2C1A0E]/70 max-w-lg mx-auto">
+          <p className="mt-3 text-sm text-espresso-800/70 max-w-lg mx-auto">
             Discover brewing guides, origin stories, pairing inspirations, and sustainable culinary insights from our master roasters.
           </p>
-          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[#C44A3A]" />
+          <div className="divider-bar mx-auto mt-4 rounded-full" />
 
           {/* Category Filter Pills */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
@@ -48,8 +48,8 @@ const Blog = forwardRef((props, ref) => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 ${
                   selectedCategory === cat
-                    ? "bg-[#2C1A0E] text-white shadow-md scale-105"
-                    : "bg-black/5 text-[#2C1A0E]/70 hover:bg-black/10"
+                    ? "bg-espresso-800 text-white shadow-md scale-105"
+                    : "bg-black/5 text-espresso-800/70 hover:bg-black/10"
                 }`}
               >
                 {cat}

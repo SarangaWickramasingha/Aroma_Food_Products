@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import './App.css';
+import { ArrowUp } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './page/Home';
@@ -41,7 +42,6 @@ function App() {
       const scrollPos = window.scrollY + 200;
       setShowScrollTop(window.scrollY > 400);
 
-      const homePos = homeRef.current?.offsetTop || 0;
       const productPos = productRef.current?.offsetTop || 0;
       const storyPos = storyRef.current?.offsetTop || 0;
       const blogPos = blogRef.current?.offsetTop || 0;
@@ -65,7 +65,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#F5F0E8] text-[#1A1008] font-sans">
+    <div className="relative min-h-screen bg-coffee-bg text-espresso-900 font-sans">
       {/* Global Fixed Floating Navigation */}
       <Navbar
         scrollToHome={scrollToHome}
@@ -117,9 +117,9 @@ function App() {
         <button
           onClick={scrollToHome}
           aria-label="Scroll back to top"
-          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#C44A3A] text-white shadow-2xl transition-all duration-300 hover:bg-[#A7382B] hover:scale-110 active:scale-95 focus:outline-none"
+          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-brand-red text-white shadow-2xl transition-all duration-300 hover:bg-brand-red-hover hover:scale-110 active:scale-95 focus:outline-none"
         >
-          <span className="text-xl font-bold">↑</span>
+          <ArrowUp size={20} strokeWidth={2.5} />
         </button>
       )}
     </div>

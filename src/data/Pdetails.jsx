@@ -9,12 +9,6 @@ const Pdetails = [
     tagline: "Travel the world through every rich sip",
     description:
       "Crafted from carefully selected high-altitude Ceylon beans, our signature roast delivers a silky smooth, full-bodied flavor with a balanced, lingering aroma. Whether starting your morning or taking a mindful pause, each cup brings warmth, clarity, and pure delight.",
-    stats: [
-      { value: "25K+", label: "Happy Coffee Lovers" },
-      { value: "12K+", label: "Cups Enjoyed Daily" },
-      { value: "180+", label: "Retail & Cafe Partners" },
-      { value: "4.9★", label: "Customer Rating" },
-    ],
     features: [
       { label: "Roast Level", value: "Medium-Dark Roast" },
       { label: "Origin", value: "Ceylon Highlands (1,400m+)" },
@@ -22,7 +16,7 @@ const Pdetails = [
       { label: "Grind", value: "Fine Ground & Whole Bean" }
     ],
     flavorNotes: ["Velvety Dark Cocoa", "Caramelized Hazelnut", "Warm Cinnamon Spice"],
-    packSizes: ["100g Pouch", "250g Tin", "500g Fresh Pack", "1kg Whole Bean"],
+    packSizes: ["50g", "250g", "500g", "1kg"],
     price: "From Rs. 850",
     sideText: "Pure Ceylon · Master Roasted ·",
     sideNote:
@@ -47,12 +41,6 @@ const Pdetails = [
     tagline: "Irresistibly crispy, crafted with authentic spice",
     description:
       "Thinly sliced natural cassava and farm-fresh potatoes, kettle-cooked to golden crispness and tossed in our secret blend of aromatic Ceylon spices. Light, crunchy, and delightfully savory with 100% natural ingredients and no artificial flavors.",
-    stats: [
-      { value: "45K+", label: "Packs Savored" },
-      { value: "100%", label: "Natural Ingredients" },
-      { value: "0%", label: "Artificial Colors/MSG" },
-      { value: "4.8★", label: "Crunch Score" },
-    ],
     features: [
       { label: "Crunch Level", value: "Kettle-Crisped Extra Crunch" },
       { label: "Ingredients", value: "Farm Cassava, Cold-Pressed Oil, Spices" },

@@ -1,3 +1,4 @@
+import { Leaf, Flame, Sparkles } from 'lucide-react';
 import { Slides } from "../data/slides";
 import ProductImg from "../components/ProductImg";
 import Description from "../components/Description";
@@ -6,6 +7,12 @@ function Home({ nextpage, Storypage }) {
   // Only display Coffee slide on the site
   const coffeeSlides = Slides.filter((s) => s.id === "coffee");
   const active = coffeeSlides[0] || Slides[0];
+
+  const trustBadges = [
+    { icon: Leaf, text: "100% Pure Ceylon Arabica/Robusta" },
+    { icon: Flame, text: "Artisan Drum Roasted" },
+    { icon: Sparkles, text: "Direct Estate Sourcing" },
+  ];
 
   return (
     <section
@@ -52,7 +59,7 @@ function Home({ nextpage, Storypage }) {
       <div className="relative z-10 mx-auto mt-6 w-full max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center justify-between gap-6 border-t border-white/15 pt-6 md:flex-row">
           <div className="flex items-center gap-3 text-xs font-semibold text-white/80">
-            <span className="h-2 w-2 rounded-full bg-[#C44A3A]" />
+            <span className="h-2 w-2 rounded-full bg-brand-red" />
             <span>Pure Ceylon Highland Roast</span>
             <span className="text-white/40">•</span>
             <span>Ratnapura, Sri Lanka</span>
@@ -60,18 +67,12 @@ function Home({ nextpage, Storypage }) {
 
           {/* Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-semibold text-white/80">
-            <div className="flex items-center gap-1.5">
-              <span className="text-amber-400">🌿</span>
-              <span>100% Pure Ceylon Arabica/Robusta</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-amber-400">🔥</span>
-              <span>Artisan Drum Roasted</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-amber-400">✨</span>
-              <span>Direct Estate Sourcing</span>
-            </div>
+            {trustBadges.map(({ icon: Icon, text }) => (
+              <div key={text} className="flex items-center gap-1.5">
+                <Icon size={14} className="text-amber-400" />
+                <span>{text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

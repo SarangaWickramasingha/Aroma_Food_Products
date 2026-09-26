@@ -10,24 +10,24 @@ const Story = forwardRef((props, ref) => {
     <section
       id="story"
       ref={ref}
-      className="relative flex min-h-screen flex-col items-center overflow-x-hidden px-6 py-24 transition-colors duration-700 sm:px-10 lg:px-16 bg-[#F5F0E8]"
+      className="relative flex min-h-screen flex-col items-center overflow-x-hidden px-6 py-24 transition-colors duration-700 sm:px-10 lg:px-16 bg-coffee-bg"
     >
       {/* Decorative ambient background accents */}
-      <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-[#C44A3A]/5 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-20 -right-20 h-80 w-80 rounded-full bg-[#E28834]/5 blur-3xl" />
+      <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-brand-red/5 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-20 -right-20 h-80 w-80 rounded-full bg-brand-amber/5 blur-3xl" />
 
       {/* Page Title Header */}
       <div className="mb-16 text-center max-w-2xl">
-        <p className="mb-2 text-xs font-bold uppercase tracking-[0.32em] text-[#C44A3A]">
+        <p className="eyebrow text-brand-red">
           Our Craft & Heritage
         </p>
-        <h2 className="font-serif text-3xl font-extrabold tracking-wide text-[#1A1008] sm:text-4xl md:text-5xl">
+        <h2 className="heading-serif tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
           From Highland Bean to Aromatic Sip
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-[#2C1A0E]/70">
+        <p className="mt-3 text-sm sm:text-base text-espresso-800/70">
           Step behind the scenes and witness the artisan discipline, time-honored curing, and drum roasting poured into every batch of pure Ceylon coffee.
         </p>
-        <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[#C44A3A]" />
+        <div className="divider-bar mx-auto mt-4 rounded-full" />
       </div>
 
       {/* Cards Layout Container */}
@@ -50,7 +50,7 @@ const Story = forwardRef((props, ref) => {
             >
               {/* Milestone Node in timeline center */}
               <div className="absolute top-10 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#2C1A0E] text-[11px] font-bold text-white ring-4 ring-white shadow-md">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-espresso-800 text-[11px] font-bold text-white ring-4 ring-white shadow-md">
                   {index + 1}
                 </span>
               </div>

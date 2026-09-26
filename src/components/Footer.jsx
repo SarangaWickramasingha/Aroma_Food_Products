@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Sprout, Sparkles, Trophy, CheckCircle2, ArrowUp } from 'lucide-react';
 
 const Footer = ({
   scrollToHome,
@@ -19,20 +20,26 @@ const Footer = ({
     }
   };
 
+  const qualityBadges = [
+    { icon: Sprout, text: '100% Pure Ceylon' },
+    { icon: Sparkles, text: 'Direct Fair Trade' },
+    { icon: Trophy, text: 'Artisan Drum Roasted' },
+  ];
+
   return (
-    <footer className="relative bg-[#120A05] text-white pt-20 pb-10 overflow-hidden border-t border-white/10">
+    <footer className="relative bg-espresso-950 text-white pt-20 pb-10 overflow-hidden border-t border-white/10">
       {/* Background ambient lighting */}
-      <div className="absolute top-0 left-1/4 -z-0 h-96 w-96 rounded-full bg-[#C44A3A]/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 -z-0 h-96 w-96 rounded-full bg-[#E28834]/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 -z-0 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 -z-0 h-96 w-96 rounded-full bg-brand-amber/10 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         {/* Top Callout Banner */}
-        <div className="mb-16 flex flex-col items-center justify-between gap-8 rounded-3xl bg-gradient-to-r from-[#2C1A0E] via-[#3A2214] to-[#2C1A0E] p-8 border border-white/10 shadow-2xl sm:p-12 lg:flex-row">
+        <div className="mb-16 flex flex-col items-center justify-between gap-8 rounded-3xl bg-gradient-to-r from-espresso-800 via-[#3A2214] to-espresso-800 p-8 border border-white/10 shadow-2xl sm:p-12 lg:flex-row">
           <div className="max-w-xl text-center lg:text-left">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#E8D5B0]">
+            <span className="section-kicker text-gold-soft">
               Pure Ceylon Roastery
             </span>
-            <h3 className="mt-2 font-serif text-2xl font-bold text-white sm:text-3xl">
+            <h3 className="heading-serif mt-2 text-2xl text-white sm:text-3xl">
               Experience the Aroma of Highland Ceylon Coffee
             </h3>
             <p className="mt-2 text-sm text-white/70">
@@ -43,13 +50,13 @@ const Footer = ({
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={scrollToContact}
-              className="cursor-pointer rounded-full bg-[#C44A3A] px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all duration-300 hover:bg-[#A7382B] hover:scale-105"
+              className="btn btn-primary px-8"
             >
               Get in Touch
             </button>
             <button
               onClick={scrollToStory}
-              className="cursor-pointer rounded-full border border-white/30 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
+              className="btn btn-ghost-light px-7"
             >
               Explore Our Story
             </button>
@@ -61,10 +68,10 @@ const Footer = ({
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-[#C44A3A] to-[#E28834] text-white shadow-md font-serif font-bold text-xl">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-brand-red to-brand-amber text-white shadow-md font-serif font-bold text-xl">
                 A
               </div>
-              <span className="font-serif text-2xl font-extrabold tracking-[0.25em] text-white">
+              <span className="heading-serif font-extrabold text-2xl tracking-[0.25em] text-white">
                 AROMA
               </span>
             </div>
@@ -74,21 +81,21 @@ const Footer = ({
 
             {/* Quality Badges */}
             <div className="mt-6 flex flex-wrap gap-2">
-              <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-semibold text-[#E8D5B0]">
-                🌱 100% Pure Ceylon
-              </span>
-              <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-semibold text-[#E8D5B0]">
-                ✨ Direct Fair Trade
-              </span>
-              <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-[11px] font-semibold text-[#E8D5B0]">
-                🏆 Artisan Drum Roasted
-              </span>
+              {qualityBadges.map(({ icon: Icon, text }) => (
+                <span
+                  key={text}
+                  className="pill bg-white/5 border border-white/10 text-gold-soft font-semibold"
+                >
+                  <Icon size={12} />
+                  {text}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Col 2: Navigation Links */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E8D5B0] mb-4">
+            <p className="section-kicker font-bold text-gold-soft mb-4 text-xs">
               Explore
             </p>
             <ul className="flex flex-col gap-2.5 text-sm text-white/70">
@@ -137,7 +144,7 @@ const Footer = ({
 
           {/* Col 3: Coffee Specialties */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E8D5B0] mb-4">
+            <p className="section-kicker font-bold text-gold-soft mb-4 text-xs">
               Coffee Roasts
             </p>
             <ul className="flex flex-col gap-2.5 text-sm text-white/70">
@@ -178,7 +185,7 @@ const Footer = ({
 
           {/* Col 4: Newsletter */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E8D5B0] mb-4">
+            <p className="section-kicker font-bold text-gold-soft mb-4 text-xs">
               Stay Connected
             </p>
             <p className="text-xs text-white/60 mb-3">
@@ -191,17 +198,18 @@ const Footer = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="rounded-xl border border-white/15 bg-white/5 px-3.5 py-2.5 text-xs text-white placeholder-white/40 outline-none transition focus:border-[#C44A3A]"
+                className="field field-light px-3.5 py-2.5 text-xs"
               />
               <button
                 type="submit"
-                className="cursor-pointer rounded-xl bg-[#C44A3A] py-2.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-[#A7382B]"
+                className="cursor-pointer rounded-xl bg-brand-red py-2.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-brand-red-hover"
               >
                 Subscribe
               </button>
               {subscribed && (
-                <p className="text-xs font-semibold text-emerald-400 mt-1">
-                  ✓ Welcome to the Aroma family!
+                <p className="text-xs font-semibold text-emerald-400 mt-1 inline-flex items-center gap-1.5">
+                  <CheckCircle2 size={13} />
+                  Welcome to the Aroma family!
                 </p>
               )}
             </form>
@@ -214,9 +222,10 @@ const Footer = ({
           <div className="flex items-center gap-6">
             <button
               onClick={scrollToHome}
-              className="hover:text-[#E8D5B0] transition cursor-pointer flex items-center gap-1.5 font-semibold"
+              className="hover:text-gold-soft transition cursor-pointer flex items-center gap-1.5 font-semibold"
             >
-              <span>↑ Back to Top</span>
+              <ArrowUp size={14} />
+              Back to Top
             </button>
           </div>
         </div>
