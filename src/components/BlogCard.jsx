@@ -1,4 +1,5 @@
 import { Clock, ArrowRight } from "lucide-react";
+import { BlogSection } from "../data/Blogdetails";
 
 const BlogCard = ({ blog, onRead }) => {
   return (
@@ -18,13 +19,13 @@ const BlogCard = ({ blog, onRead }) => {
 
         {/* Category Pill */}
         <span className="pill pill-red absolute top-4 left-4">
-          {blog.category || "Journal"}
+          {blog.category || BlogSection.fallbacks.cardCategory}
         </span>
 
         {/* Read Time */}
         <span className="pill pill-dark-soft absolute bottom-3 right-4 inline-flex items-center gap-1.5 px-2.5 py-0.5">
           <Clock size={12} />
-          {blog.readTime || "3 min read"}
+          {blog.readTime || BlogSection.fallbacks.readTime}
         </span>
       </div>
 
@@ -54,11 +55,11 @@ const BlogCard = ({ blog, onRead }) => {
         {/* Read More Trigger */}
         <div className="mt-5 flex items-center justify-between pt-2">
           <span className="eyebrow inline-flex items-center gap-1.5 text-brand-red transition-all duration-300 group-hover:gap-2.5">
-            Read Article
+            {BlogSection.readCta}
             <ArrowRight size={14} />
           </span>
           <span className="text-xs text-espresso-900/40 transition group-hover:text-brand-red">
-            Tap to open
+            {BlogSection.tapHint}
           </span>
         </div>
       </div>

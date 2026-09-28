@@ -1,5 +1,12 @@
-import { useState } from 'react';
-import { Sprout, Sparkles, Trophy, CheckCircle2, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import Logo from './Logo';
+import {
+  site,
+  navItems,
+  footerRoasts,
+  footerCopy,
+  qualityBadges,
+} from '../data/site';
 
 const Footer = ({
   scrollToHome,
@@ -8,23 +15,13 @@ const Footer = ({
   scrollToBlog,
   scrollToContact
 }) => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleNewsletter = (e) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
-    }
+  const scrollHandlers = {
+    home: scrollToHome,
+    product: scrollToProduct,
+    story: scrollToStory,
+    blog: scrollToBlog,
+    contact: scrollToContact,
   };
-
-  const qualityBadges = [
-    { icon: Sprout, text: '100% Pure Ceylon' },
-    { icon: Sparkles, text: 'Direct Fair Trade' },
-    { icon: Trophy, text: 'Artisan Drum Roasted' },
-  ];
 
   return (
     <footer className="relative bg-espresso-950 text-white pt-20 pb-10 overflow-hidden border-t border-white/10">
@@ -37,13 +34,13 @@ const Footer = ({
         <div className="mb-16 flex flex-col items-center justify-between gap-8 rounded-3xl bg-gradient-to-r from-espresso-800 via-[#3A2214] to-espresso-800 p-8 border border-white/10 shadow-2xl sm:p-12 lg:flex-row">
           <div className="max-w-xl text-center lg:text-left">
             <span className="section-kicker text-gold-soft">
-              Pure Ceylon Roastery
+              {footerCopy.calloutKicker}
             </span>
             <h3 className="heading-serif mt-2 text-2xl text-white sm:text-3xl">
-              Experience the Aroma of Highland Ceylon Coffee
+              {footerCopy.calloutHeading}
             </h3>
             <p className="mt-2 text-sm text-white/70">
-              Direct estate-to-cup coffee crafted with artisan passion in Ratnapura, Sri Lanka.
+              {footerCopy.calloutBody}
             </p>
           </div>
 
@@ -52,38 +49,37 @@ const Footer = ({
               onClick={scrollToContact}
               className="btn btn-primary px-8"
             >
-              Get in Touch
+              {footerCopy.calloutPrimary}
             </button>
             <button
               onClick={scrollToStory}
               className="btn btn-ghost-light px-7"
             >
-              Explore Our Story
+              {footerCopy.calloutSecondary}
             </button>
           </div>
         </div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 pb-16 border-b border-white/10">
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-tr from-brand-red to-brand-amber text-white shadow-md font-serif font-bold text-xl">
-                A
-              </div>
-              <span className="heading-serif font-extrabold text-2xl tracking-[0.25em] text-white">
-                AROMA
-              </span>
-            </div>
+            <button
+              onClick={scrollToHome}
+              className="group flex cursor-pointer items-center text-left focus:outline-none"
+              aria-label={site.brand.logoHomeAriaLabel}
+            >
+              <Logo className="transition-transform duration-300 group-hover:scale-[1.03] origin-left" />
+            </button>
             <p className="mt-4 text-sm leading-relaxed text-white/65 max-w-sm">
-              Aroma Food Products is dedicated to crafting premium Ceylon single-origin coffee, blending time-honored highland agriculture with master batch roasting.
+              {site.brand.blurb}
             </p>
 
             {/* Quality Badges */}
             <div className="mt-6 flex flex-wrap gap-2">
-              {qualityBadges.map(({ icon: Icon, text }) => (
+              {qualityBadges.map(({ id, icon: Icon, text }) => (
                 <span
-                  key={text}
+                  key={id}
                   className="pill bg-white/5 border border-white/10 text-gold-soft font-semibold"
                 >
                   <Icon size={12} />
@@ -96,136 +92,54 @@ const Footer = ({
           {/* Col 2: Navigation Links */}
           <div>
             <p className="section-kicker font-bold text-gold-soft mb-4 text-xs">
-              Explore
+              {footerCopy.exploreHeading}
             </p>
             <ul className="flex flex-col gap-2.5 text-sm text-white/70">
-              <li>
-                <button
-                  onClick={scrollToHome}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Home
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToProduct}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Coffee Collection
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToStory}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Our Craft Journey
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToBlog}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Journal & Recipes
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToContact}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Contact Roastery
-                </button>
-              </li>
+              {navItems.map(({ section, footerTitle }) => (
+                <li key={section}>
+                  <button
+                    onClick={scrollHandlers[section]}
+                    className="hover:text-white transition cursor-pointer text-left"
+                  >
+                    {footerTitle}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Col 3: Coffee Specialties */}
           <div>
             <p className="section-kicker font-bold text-gold-soft mb-4 text-xs">
-              Coffee Roasts
+              {footerCopy.roastsHeading}
             </p>
             <ul className="flex flex-col gap-2.5 text-sm text-white/70">
-              <li>
-                <button
-                  onClick={scrollToProduct}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Highland Medium-Dark Roast
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToProduct}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Single-Origin Whole Bean
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToProduct}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Fine Ground Filter Roast
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={scrollToProduct}
-                  className="hover:text-white transition cursor-pointer text-left"
-                >
-                  Estate Reserve Selection
-                </button>
-              </li>
+              {footerRoasts.map(({ id, title }) => (
+                <li key={id}>
+                  <button
+                    onClick={scrollToProduct}
+                    className="hover:text-white transition cursor-pointer text-left"
+                  >
+                    {title}
+                  </button>
+                </li>
+              ))}
             </ul>
-          </div>
-
-          {/* Col 4: Newsletter */}
-          <div>
-            <p className="section-kicker font-bold text-gold-soft mb-4 text-xs">
-              Stay Connected
-            </p>
-            <p className="text-xs text-white/60 mb-3">
-              Subscribe for roast releases, brewing guides, and seasonal estate updates.
-            </p>
-            <form onSubmit={handleNewsletter} className="flex flex-col gap-2">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="field field-light px-3.5 py-2.5 text-xs"
-              />
-              <button
-                type="submit"
-                className="cursor-pointer rounded-xl bg-brand-red py-2.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-brand-red-hover"
-              >
-                Subscribe
-              </button>
-              {subscribed && (
-                <p className="text-xs font-semibold text-emerald-400 mt-1 inline-flex items-center gap-1.5">
-                  <CheckCircle2 size={13} />
-                  Welcome to the Aroma family!
-                </p>
-              )}
-            </form>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-xs text-white/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} Aroma Food Products. All rights reserved. Kambadola, Dela, Rathnapura, Sri Lanka.</p>
+          <p>
+            &copy; {new Date().getFullYear()} {footerCopy.copyright}
+          </p>
           <div className="flex items-center gap-6">
             <button
               onClick={scrollToHome}
               className="hover:text-gold-soft transition cursor-pointer flex items-center gap-1.5 font-semibold"
             >
               <ArrowUp size={14} />
-              Back to Top
+              {footerCopy.backToTop}
             </button>
           </div>
         </div>

@@ -1,12 +1,12 @@
 import { forwardRef } from "react";
 import ProductImg from "../components/ProductImg";
 import SlideInfo from "../components/SideInfo";
-import Pdetails from "../data/Pdetails";
+import Pdetails, { ProductSection } from "../data/Pdetails";
 import Description from "../components/Description";
+import { activeProductId, selectById } from "../data/site";
 
 const Product = forwardRef(({ Storypage }, ref) => {
-  // Always display only the Coffee product on the site
-  const coffeeProduct = Pdetails.find((p) => p.id === "coffee") || Pdetails[0];
+  const coffeeProduct = selectById(Pdetails, activeProductId);
 
   return (
     <section
@@ -19,10 +19,10 @@ const Product = forwardRef(({ Storypage }, ref) => {
         {/* Section Header & Subtitle */}
         <div className="mb-14 text-center">
           <p className="eyebrow text-brand-red">
-            Pure Ceylon Specialty Roast
+            {ProductSection.eyebrow}
           </p>
           <h2 className="mt-2 heading-serif font-extrabold text-3xl sm:text-4xl md:text-5xl text-espresso-900">
-            Our Signature Coffee
+            {ProductSection.heading}
           </h2>
           <div className="divider-bar mx-auto mt-3 rounded-full" />
         </div>
@@ -41,7 +41,7 @@ const Product = forwardRef(({ Storypage }, ref) => {
                 header={coffeeProduct.tagline}
                 des={coffeeProduct.description}
                 btn={Storypage}
-                btnText="Discover The Craft Story"
+                btnText={ProductSection.ctaText}
                 theam="dark"
                 label={coffeeProduct.category}
                 packSizes={coffeeProduct.packSizes}
@@ -52,7 +52,7 @@ const Product = forwardRef(({ Storypage }, ref) => {
               <ProductImg
                 image={coffeeProduct.productImage}
                 alt={coffeeProduct.imageAlt}
-                badge="Highland Estate • Single Origin"
+                badge={ProductSection.badge}
               />
             </div>
           </div>

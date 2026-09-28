@@ -68,4 +68,15 @@ const Pdetails = [
   }
 ];
 
+export const ProductSection = {
+  eyebrow: "Pure Ceylon Specialty Roast",
+  heading: "Our Signature Coffee",
+  badge: "Highland Estate • Single Origin",
+  ctaText: "Discover The Craft Story",
+  sizesLabel: "Available Sizes:",
+  defaultBadge: "100% Pure Ceylon",
+  defaultCtaText: "Explore Our Craft",
+  defaultSecondaryCtaText: "Quick Order",
+};
+
 export default Pdetails;

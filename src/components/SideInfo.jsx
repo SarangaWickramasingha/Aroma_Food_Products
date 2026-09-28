@@ -1,12 +1,17 @@
 import { Heart } from "lucide-react";
 
+/**
+ * The spec card is themed entirely from the product record in `src/data`.
+ * Only the text fields are guarded, because `CircleStamp` interpolates them
+ * into a string and would otherwise render the literal "undefined".
+ */
 const SlideInfo = ({ product }) => {
   const {
     sideText = "",
-    circleColor = "#e8d5b0",
-    stampTextColor = "#2c1a0e",
-    cardBg = "#fffdf7",
-    titleColor = "#1a1008",
+    circleColor,
+    stampTextColor,
+    cardBg,
+    titleColor,
     sideNote = "",
   } = product;
 

@@ -13,7 +13,9 @@
  * Composition: a crenellated tower (three merlons stepping down to the right)
  * with two banner flags, above three parallel waves.
  */
-const LogoMark = ({ className = '', title = 'Aroma Food Products' }) => (
+import { site } from '../data/site';
+
+const LogoMark = ({ className = '', title = site.brand.logoAlt }) => (
   <svg
     viewBox="-2 -2 300 360"
     className={className}
@@ -44,15 +46,15 @@ const LogoMark = ({ className = '', title = 'Aroma Food Products' }) => (
  * Navbar / footer lockup: the mark beside the AROMA wordmark and the
  * "~Majestic Taste~" tagline from the original artwork.
  */
-const Logo = ({ className = '', markClassName = '', title = 'Aroma Food Products' }) => (
+const Logo = ({ className = '', markClassName = '', title = site.brand.logoAlt }) => (
   <span className={`flex items-center gap-3 ${className}`}>
     <LogoMark className={`h-11 w-auto shrink-0 text-white drop-shadow-md ${markClassName}`} title={title} />
     <span className="flex flex-col">
       <span className="block font-serif text-[22px] font-extrabold leading-none tracking-[0.28em] text-white drop-shadow-md">
-        AROMA
+        {site.brand.wordmark}
       </span>
       <span className="-mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.3em] text-gold-soft">
-        ~Majestic Taste~
+        {site.brand.tagline}
       </span>
     </span>
   </span>

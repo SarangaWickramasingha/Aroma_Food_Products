@@ -3,20 +3,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import BlogCard from "../components/BlogCard";
 import ArticleModal from "../components/ArticleModal";
-import Blogdetails from "../data/Blogdetails";
+import Blogdetails, { BlogSection } from "../data/Blogdetails";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const categories = ["All", "Brewing Guide", "Behind the Craft", "Recipes & Pairing", "Sustainability"];
+const categories = BlogSection.categories;
 
 const Blog = forwardRef((props, ref) => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [activeArticle, setActiveArticle] = useState(null);
 
   const filteredBlogs =
-    selectedCategory === "All"
+    selectedCategory === categories[0]
       ? Blogdetails
       : Blogdetails.filter((b) => b.category === selectedCategory);
 
@@ -30,13 +30,13 @@ const Blog = forwardRef((props, ref) => {
         {/* Header */}
         <div className="mb-12 text-center">
           <p className="eyebrow text-brand-red">
-            Brewing Insights & Stories
+            {BlogSection.eyebrow}
           </p>
           <h2 className="mt-2 heading-serif font-extrabold tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
-            Aroma Journal & Recipes
+            {BlogSection.heading}
           </h2>
           <p className="mt-3 text-sm text-espresso-800/70 max-w-lg mx-auto">
-            Discover brewing guides, origin stories, pairing inspirations, and sustainable culinary insights from our master roasters.
+            {BlogSection.intro}
           </p>
           <div className="divider-bar mx-auto mt-4 rounded-full" />
 

@@ -1,12 +1,13 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { ProductSection } from "../data/Pdetails";
 
 function Description({
   header,
   des,
   btn,
-  btnText = "Explore Our Craft",
+  btnText = ProductSection.defaultCtaText,
   secondaryBtn,
-  secondaryBtnText = "Quick Order",
+  secondaryBtnText = ProductSection.defaultSecondaryCtaText,
   theam = "white",
   label,
   price,
@@ -57,7 +58,7 @@ function Description({
       {packSizes.length > 0 && (
         <div className="flex flex-col gap-1.5 pt-1">
           <span className="eyebrow opacity-70">
-            Available Sizes:
+            {ProductSection.sizesLabel}
           </span>
           <div className="flex flex-wrap gap-2">
             {packSizes.map((size) => (

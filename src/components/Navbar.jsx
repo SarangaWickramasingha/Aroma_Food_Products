@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import NavItem from './NavItem';
 import Logo from './Logo';
+import { navItems, navCta, site } from '../data/site';
 
 const Navbar = ({
   scrollToHome,
@@ -27,13 +28,20 @@ const Navbar = ({
     fn?.();
   };
 
-  const mobileLinks = [
-    { title: 'Home', section: 'home', target: scrollToHome },
-    { title: 'Coffee Collection', section: 'product', target: scrollToProduct },
-    { title: 'Our Craft', section: 'story', target: scrollToStory },
-    { title: 'Journal', section: 'blog', target: scrollToBlog },
-    { title: 'Contact Us', section: 'contact', target: scrollToContact },
-  ];
+  /** Maps a data-driven section id to the scroll handler App passes in. */
+  const scrollHandlers = {
+    home: scrollToHome,
+    product: scrollToProduct,
+    story: scrollToStory,
+    blog: scrollToBlog,
+    contact: scrollToContact,
+  };
+
+  const mobileLinks = navItems.map(({ section, mobileTitle }) => ({
+    title: mobileTitle,
+    section,
+    target: scrollHandlers[section],
+  }));
 
   return (
     <header
@@ -48,7 +56,7 @@ const Navbar = ({
         <button
           onClick={() => handleNav(scrollToHome)}
           className="group flex items-center text-left focus:outline-none cursor-pointer"
-          aria-label="Aroma Food Products — go to top"
+          aria-label={site.brand.logoHomeAriaLabel}
         >
           <Logo className="transition-transform duration-300 group-hover:scale-[1.03] origin-left" />
         </button>
@@ -56,38 +64,21 @@ const Navbar = ({
         {/* Desktop Nav Items */}
         <nav aria-label="Main navigation" className="hidden items-center gap-8 lg:flex xl:gap-12">
           <ul className="flex items-center gap-8 text-[15px] font-medium text-white/90 xl:gap-10">
-            <NavItem
-              title="Home"
-              isActive={activeSection === 'home'}
-              scoll={() => handleNav(scrollToHome)}
-            />
-            <NavItem
-              title="Coffee"
-              isActive={activeSection === 'product'}
-              scoll={() => handleNav(scrollToProduct)}
-            />
-            <NavItem
-              title="Our Craft"
-              isActive={activeSection === 'story'}
-              scoll={() => handleNav(scrollToStory)}
-            />
-            <NavItem
-              title="Journal"
-              isActive={activeSection === 'blog'}
-              scoll={() => handleNav(scrollToBlog)}
-            />
-            <NavItem
-              title="Contact"
-              isActive={activeSection === 'contact'}
-              scoll={() => handleNav(scrollToContact)}
-            />
+            {navItems.map(({ section, title }) => (
+              <NavItem
+                key={section}
+                title={title}
+                isActive={activeSection === section}
+                scoll={() => handleNav(scrollHandlers[section])}
+              />
+            ))}
           </ul>
 
           <button
             onClick={() => handleNav(scrollToContact)}
             className="cursor-pointer rounded-full bg-brand-red px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-brand-red-hover hover:shadow-lg hover:scale-105 focus:outline-none"
           >
-            Contact Us
+            {navCta.desktop}
           </button>
         </nav>
 
@@ -97,12 +88,13 @@ const Navbar = ({
             onClick={() => handleNav(scrollToContact)}
             className="cursor-pointer rounded-full bg-brand-red px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-red-hover"
           >
-            Contact
+            {navCta.mobile}
           </button>
 
           <button
+            type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            aria-label="Toggle navigation menu"
+            aria-label={navCta.drawerAriaLabel}
             aria-expanded={menuOpen}
             className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl bg-white/10 backdrop-blur-md transition-colors hover:bg-white/20 focus:outline-none border border-white/15"
           >

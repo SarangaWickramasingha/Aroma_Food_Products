@@ -100,3 +100,28 @@ True artisan craft honors both the consumer and the Earth. At Aroma Food Product
 ];
 
 export default Blogdetails;
+
+export const BlogSection = {
+  eyebrow: "Brewing Insights & Stories",
+  heading: "Aroma Journal & Recipes",
+  intro:
+    "Discover brewing guides, origin stories, pairing inspirations, and sustainable culinary insights from our master roasters.",
+  categories: [
+    "All",
+    "Brewing Guide",
+    "Behind the Craft",
+    "Recipes & Pairing",
+    "Sustainability",
+  ],
+  readCta: "Read Article",
+  tapHint: "Tap to open",
+  backCta: "Back to Journal",
+  sharePrompt:
+    "Enjoyed this read? Share with fellow food & coffee enthusiasts.",
+  fallbacks: {
+    cardCategory: "Journal",
+    modalCategory: "Story",
+    readTime: "3 min read",
+    authorRole: "Aroma Team",
+  },
+};

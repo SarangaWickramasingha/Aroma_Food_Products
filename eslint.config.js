@@ -18,4 +18,12 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // src/data holds plain data and helper functions, never components, so the
+    // fast-refresh export rule does not apply there.
+    files: ['src/data/**/*.{js,jsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

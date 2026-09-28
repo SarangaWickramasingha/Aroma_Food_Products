@@ -1,49 +1,24 @@
 import { forwardRef, useState } from "react";
 import {
-  Coffee,
-  Package,
-  Tag,
-  MessageCircle,
   Mail,
   MapPin,
   CheckCircle2,
   Send,
   Plus,
   Minus,
+  MessageCircle,
 } from "lucide-react";
 import contactBg from "../assets/Contactus.png";
-
-const subjects = [
-  { label: "Retail Inquiry", icon: Coffee },
-  { label: "Wholesale & Cafe Supply", icon: Package },
-  { label: "Private Label / Roasting", icon: Tag },
-  { label: "General Feedback", icon: MessageCircle },
-];
-
-const faqs = [
-  {
-    q: "Where is Aroma Food Products located?",
-    a: "Our roastery and processing facilities are based in Kambadola, Dela, Ratnapura, nestled near Sri Lanka's pristine highland tea and coffee estates."
-  },
-  {
-    q: "Do you offer islandwide delivery in Sri Lanka?",
-    a: "Yes! We partner with premier courier networks to deliver fresh roasted coffee and sealed artisan snack packs across Sri Lanka within 2-3 business days."
-  },
-  {
-    q: "Can cafes and hotels order bulk custom roasts?",
-    a: "Absolutely. We supply specialty cafes, boutique hotels, and restaurants with whole bean or ground coffee in customized roast profiles and bulk packaging."
-  }
-];
+import {
+  subjects,
+  faqs,
+  contactSection,
+  emptyForm,
+} from "../data/Contactdetails";
+import { site, whatsappLink } from "../data/site";
 
 const Contact = forwardRef((props, ref) => {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    subject: "Wholesale & Cafe Supply",
-    message: "",
-  });
+  const [form, setForm] = useState(emptyForm);
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
@@ -57,9 +32,9 @@ const Contact = forwardRef((props, ref) => {
   };
 
   const copyEmail = () => {
-    navigator.clipboard?.writeText("aromafoodproduct@gmail.com");
+    navigator.clipboard?.writeText(site.contact.email);
     setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 3000);
+    setTimeout(() => setCopiedEmail(false), contactSection.copyResetMs);
   };
 
   return (
@@ -76,13 +51,13 @@ const Contact = forwardRef((props, ref) => {
         {/* Section Header */}
         <div className="mb-14 text-center">
           <p className="eyebrow text-gold-soft">
-            Get In Touch With Our Roastery
+            {contactSection.eyebrow}
           </p>
           <h2 className="heading-serif font-extrabold text-3xl text-white sm:text-4xl md:text-5xl">
-            Let’s Connect & Brew Together
+            {contactSection.heading}
           </h2>
           <p className="mt-3 text-sm text-white/70 max-w-lg mx-auto">
-            Whether you want to place a custom order, inquire about wholesale supply, or simply chat coffee, our team is here for you.
+            {contactSection.intro}
           </p>
           <div className="divider-bar mx-auto mt-4 rounded-full" />
         </div>
@@ -93,10 +68,10 @@ const Contact = forwardRef((props, ref) => {
           <div className="flex flex-col justify-between text-white border-b border-white/10 pb-8 lg:border-b-0 lg:border-r lg:border-white/10 lg:pr-10 lg:pb-0">
             <div>
               <h3 className="heading-serif text-2xl md:text-3xl text-white">
-                Contact Information
+                {contactSection.infoHeading}
               </h3>
               <p className="mt-2 text-sm text-white/70">
-                Direct inquiries for wholesale, distribution & general feedback.
+                {contactSection.infoIntro}
               </p>
 
               {/* Direct Info List */}
@@ -109,10 +84,10 @@ const Contact = forwardRef((props, ref) => {
                     </span>
                     <div>
                       <p className="eyebrow text-white/60">
-                        Email Us
+                        {contactSection.emailLabel}
                       </p>
                       <p className="text-xs sm:text-sm font-semibold">
-                        aromafoodproduct@gmail.com
+                        {site.contact.email}
                       </p>
                     </div>
                   </div>
@@ -122,7 +97,9 @@ const Contact = forwardRef((props, ref) => {
                     className="cursor-pointer rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold hover:bg-white/20 transition inline-flex items-center gap-1"
                   >
                     {copiedEmail ? <CheckCircle2 size={13} /> : null}
-                    {copiedEmail ? "Copied" : "Copy"}
+                    {copiedEmail
+                      ? contactSection.copiedLabel
+                      : contactSection.copyLabel}
                   </button>
                 </div>
 
@@ -133,23 +110,23 @@ const Contact = forwardRef((props, ref) => {
                   </span>
                   <div>
                     <p className="eyebrow text-white/60">
-                      Roastery & Estate
+                      {contactSection.locationLabel}
                     </p>
                     <p className="text-xs sm:text-sm font-semibold leading-relaxed">
-                      Kambadola, Dela, Rathnapura, Sri Lanka
+                      {site.contact.address}
                     </p>
                   </div>
                 </div>
 
                 {/* WhatsApp Chat Button */}
                 <a
-                  href="https://wa.me/94771234567?text=Hello%20Aroma%20Food%20Products!%20I%20have%20an%20inquiry."
+                  href={whatsappLink()}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-whatsapp rounded-2xl p-3.5"
                 >
                   <MessageCircle size={18} />
-                  <span>Instant Chat on WhatsApp</span>
+                  <span>{contactSection.whatsappCta}</span>
                 </a>
               </div>
             </div>
@@ -157,10 +134,10 @@ const Contact = forwardRef((props, ref) => {
             {/* Operating Hours */}
             <div className="mt-8 rounded-2xl bg-black/20 p-4 border border-white/5">
               <p className="eyebrow text-gold-soft">
-                Roastery Operating Hours
+                {contactSection.hoursLabel}
               </p>
               <p className="mt-1 text-xs text-white/80">
-                Monday – Saturday: 8:00 AM – 6:00 PM (IST)
+                {site.contact.hours}
               </p>
             </div>
           </div>
@@ -168,39 +145,39 @@ const Contact = forwardRef((props, ref) => {
           {/* Right Column: Interactive Form */}
           <form onSubmit={handleSubmit} className="text-white">
             <h3 className="heading-serif text-2xl md:text-3xl mb-6">
-              Send a Message
+              {contactSection.formHeading}
             </h3>
 
             <div className="grid grid-cols-1 gap-x-6 gap-y-5 md:grid-cols-2">
               <Field
-                label="First Name"
+                label={contactSection.fieldLabels.firstName}
                 name="firstName"
                 value={form.firstName}
                 onChange={handleChange}
-                placeholder="Kasun"
+                placeholder={contactSection.placeholders.firstName}
                 required
               />
               <Field
-                label="Last Name"
+                label={contactSection.fieldLabels.lastName}
                 name="lastName"
                 value={form.lastName}
                 onChange={handleChange}
-                placeholder="Fernando"
+                placeholder={contactSection.placeholders.lastName}
                 required
               />
               <Field
-                label="Email Address"
+                label={contactSection.fieldLabels.email}
                 name="email"
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="kasun@example.com"
+                placeholder={contactSection.placeholders.email}
                 required
               />
               <Field
-                label="Phone / WhatsApp"
+                label={contactSection.fieldLabels.phone}
                 name="phone"
-                placeholder="+94 77 123 4567"
+                placeholder={contactSection.placeholders.phone}
                 value={form.phone}
                 onChange={handleChange}
               />
@@ -209,12 +186,12 @@ const Contact = forwardRef((props, ref) => {
             {/* Subject Selector Pills */}
             <div className="mt-7">
               <label className="label mb-2 text-white/80">
-                Inquiry Topic
+                {contactSection.fieldLabels.subject}
               </label>
               <div className="flex flex-wrap gap-2.5">
-                {subjects.map(({ label, icon: Icon }) => (
+                {subjects.map(({ id, label, icon: Icon }) => (
                   <button
-                    key={label}
+                    key={id}
                     type="button"
                     onClick={() => setForm({ ...form, subject: label })}
                     className={`cursor-pointer rounded-xl px-3.5 py-2 text-xs font-semibold transition-all inline-flex items-center gap-1.5 ${
@@ -236,12 +213,12 @@ const Contact = forwardRef((props, ref) => {
                 className="label mb-1 text-white/80"
                 htmlFor="contact-message"
               >
-                Your Message / Inquiry Details
+                {contactSection.fieldLabels.message}
               </label>
               <textarea
                 id="contact-message"
                 name="message"
-                placeholder="Tell us about your requirements, orders, or any questions..."
+                placeholder={contactSection.placeholders.message}
                 value={form.message}
                 onChange={handleChange}
                 required
@@ -256,24 +233,17 @@ const Contact = forwardRef((props, ref) => {
                 <div className="w-full rounded-2xl bg-emerald-500/20 border border-emerald-500/30 p-4 text-center">
                   <p className="text-sm font-bold text-emerald-300 inline-flex items-center justify-center gap-2">
                     <CheckCircle2 size={15} />
-                    Message received! Our master roaster team will contact you shortly.
+                    {contactSection.successMessage}
                   </p>
                   <button
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
-                      setForm({
-                        firstName: "",
-                        lastName: "",
-                        email: "",
-                        phone: "",
-                        subject: "Wholesale & Cafe Supply",
-                        message: "",
-                      });
+                      setForm(emptyForm);
                     }}
                     className="mt-2 text-xs underline text-white/70 hover:text-white"
                   >
-                    Send another inquiry
+                    {contactSection.resendCta}
                   </button>
                 </div>
               ) : (
@@ -292,9 +262,8 @@ const Contact = forwardRef((props, ref) => {
         {/* Interactive FAQ Accordion */}
         <div className="mt-16 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-10 backdrop-blur-md text-white">
           <h3 className="heading-serif text-xl sm:text-2xl text-center mb-6">
-            Frequently Asked Questions
-          </h3>
-          <div className="flex flex-col gap-3 max-w-3xl mx-auto">
+            {contactSection.faqHeading}
+          </h3>          <div className="flex flex-col gap-3 max-w-3xl mx-auto">
             {faqs.map((faq, idx) => (
               <div
                 key={faq.q}

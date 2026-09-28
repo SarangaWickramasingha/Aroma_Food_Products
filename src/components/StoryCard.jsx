@@ -1,9 +1,11 @@
+import { StorySection } from "../data/Storydetails";
+
 function StoryCard({
   image,
   title,
   subtitle,
   description,
-  tag = "Craft Phase",
+  tag = StorySection.defaultTag,
   stat = "",
   rotation = 0,
   step = "01"
@@ -54,7 +56,7 @@ function StoryCard({
         {stat && (
           <div className="mt-3 flex items-center justify-between rounded-xl bg-black/[0.03] px-3 py-2 border border-black/5">
             <span className="eyebrow text-espresso-800/60">
-              Benchmark
+              {StorySection.statLabel}
             </span>
             <span className="text-xs font-extrabold text-brand-red">
               {stat}

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { X } from "lucide-react";
+import { BlogSection } from "../data/Blogdetails";
 
 const ArticleModal = ({ article, onClose }) => {
   useEffect(() => {
@@ -39,9 +40,11 @@ const ArticleModal = ({ article, onClose }) => {
 
         {/* Category & Read Time */}
         <div className="eyebrow flex items-center gap-3 text-brand-red">
-          <span>{article.category || "Story"}</span>
+          <span>{article.category || BlogSection.fallbacks.modalCategory}</span>
           <span>•</span>
-          <span className="text-espresso-600">{article.readTime || "3 min read"}</span>
+          <span className="text-espresso-600">
+            {article.readTime || BlogSection.fallbacks.readTime}
+          </span>
         </div>
 
         {/* Title */}
@@ -63,7 +66,7 @@ const ArticleModal = ({ article, onClose }) => {
           )}
           <div>
             <p className="text-sm font-bold text-espresso-900">{article.author}</p>
-            <p className="text-xs text-espresso-600">{article.date} · {article.authorRole || "Aroma Team"}</p>
+            <p className="text-xs text-espresso-600">{article.date} · {article.authorRole || BlogSection.fallbacks.authorRole}</p>
           </div>
         </div>
 
@@ -97,13 +100,13 @@ const ArticleModal = ({ article, onClose }) => {
         {/* Bottom CTA */}
         <div className="mt-8 flex items-center justify-between border-t border-black/10 pt-6">
           <p className="text-xs font-semibold text-espresso-600">
-            Enjoyed this read? Share with fellow food & coffee enthusiasts.
+            {BlogSection.sharePrompt}
           </p>
           <button
             onClick={onClose}
             className="rounded-full bg-espresso-800 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-brand-red"
           >
-            Back to Journal
+            {BlogSection.backCta}
           </button>
         </div>
       </div>

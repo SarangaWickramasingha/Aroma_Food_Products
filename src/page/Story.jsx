@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import StoryCard from "../components/StoryCard";
-import { StoryData } from "../data/Storydetails";
+import { StoryData, StorySection } from "../data/Storydetails";
+import { activeProductId, selectById } from "../data/site";
 
 const Story = forwardRef((props, ref) => {
-  // Only display Coffee Craft story on the site
-  const coffeeStoryData = StoryData.coffee || [];
+  const storyCards = selectById(StoryData, activeProductId);
 
   return (
     <section
@@ -19,13 +19,13 @@ const Story = forwardRef((props, ref) => {
       {/* Page Title Header */}
       <div className="mb-16 text-center max-w-2xl">
         <p className="eyebrow text-brand-red">
-          Our Craft & Heritage
+          {StorySection.eyebrow}
         </p>
         <h2 className="heading-serif tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
-          From Highland Bean to Aromatic Sip
+          {StorySection.heading}
         </h2>
         <p className="mt-3 text-sm sm:text-base text-espresso-800/70">
-          Step behind the scenes and witness the artisan discipline, time-honored curing, and drum roasting poured into every batch of pure Ceylon coffee.
+          {StorySection.intro}
         </p>
         <div className="divider-bar mx-auto mt-4 rounded-full" />
       </div>
@@ -35,7 +35,7 @@ const Story = forwardRef((props, ref) => {
         {/* Subtle center timeline line for desktop */}
         <div className="pointer-events-none absolute top-10 bottom-10 left-1/2 -ml-[1px] hidden w-[2px] bg-gradient-to-b from-transparent via-black/15 to-transparent md:block" />
 
-        {coffeeStoryData.map((card, index) => {
+        {storyCards.map((card, index) => {
           const rotationAngle = index % 2 === 0 ? -3 : 3;
           const alignLeft = index % 2 === 0;
 

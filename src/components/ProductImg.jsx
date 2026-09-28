@@ -1,4 +1,10 @@
-function ProductImg({ image, alt = "", badge = "100% Pure Ceylon" }) {
+import { ProductSection } from "../data/Pdetails";
+
+function ProductImg({
+  image,
+  alt = "",
+  badge = ProductSection.defaultBadge
+}) {
   return (
     <div className="relative flex items-center justify-center py-6">
       {/* Ambient background glow aura */}

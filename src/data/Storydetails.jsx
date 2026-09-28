@@ -80,3 +80,12 @@ export const StoryData = {
 };
 
 export const Storydetails = StoryData.coffee;
+
+export const StorySection = {
+  eyebrow: "Our Craft & Heritage",
+  heading: "From Highland Bean to Aromatic Sip",
+  intro:
+    "Step behind the scenes and witness the artisan discipline, time-honored curing, and drum roasting poured into every batch of pure Ceylon coffee.",
+  statLabel: "Benchmark",
+  defaultTag: "Craft Phase",
+};

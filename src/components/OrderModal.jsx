@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import { X, Zap, MessageCircle } from "lucide-react";
 import Pdetails from "../data/Pdetails";
+import {
+  orderTypes,
+  orderModal,
+  buildOrderMessage,
+} from "../data/Orderdetails";
+import { whatsappLink } from "../data/site";
 
 const OrderModal = ({ isOpen, onClose, defaultProductIndex = 0 }) => {
   const [selectedProductIndex, setSelectedProductIndex] = useState(defaultProductIndex);
   const [selectedPack, setSelectedPack] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(orderModal.quantityStep);
   const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
-  const [orderType, setOrderType] = useState("retail"); // retail or wholesale
+  const [orderType, setOrderType] = useState(orderTypes[0].id);
 
   const [prevDefault, setPrevDefault] = useState(defaultProductIndex);
   if (prevDefault !== defaultProductIndex) {
@@ -56,21 +62,18 @@ const OrderModal = ({ isOpen, onClose, defaultProductIndex = 0 }) => {
 
   const handleWhatsAppOrder = (e) => {
     e.preventDefault();
-    const phoneNum = "94771234567"; // Aroma official business WhatsApp
-    const message = `Hello Aroma Food Products!
-I would like to make an inquiry / order:
-- *Type*: ${orderType === "wholesale" ? "Wholesale / Distribution" : "Retail Order"}
-- *Product*: ${currentProduct.label}
-- *Size / Variant*: ${effectivePack}
-- *Quantity*: ${quantity}
-- *Name*: ${customerName || "Customer"}
-- *Phone*: ${phone || "Not provided"}
-${notes ? `- *Notes*: ${notes}` : ""}
 
-Please confirm availability and pricing. Thank you!`;
+    const message = buildOrderMessage({
+      orderType,
+      product: currentProduct.label,
+      pack: effectivePack,
+      quantity,
+      customerName,
+      phone,
+      notes,
+    });
 
-    const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNum}?text=${encoded}`, "_blank");
+    window.open(whatsappLink(encodeURIComponent(message)), "_blank");
     onClose();
   };
 
@@ -98,23 +101,20 @@ Please confirm availability and pricing. Thank you!`;
         {/* Modal Header */}
         <div>
           <span className="pill font-bold bg-brand-red/10 text-brand-red">
-            Quick Order & Inquiry
+            {orderModal.pill}
           </span>
           <h2 id="order-modal-title" className="heading-serif mt-2 text-2xl sm:text-3xl">
-            Order Aroma Pure Ceylon Products
+            {orderModal.heading}
           </h2>
           <p className="mt-1 text-sm text-espresso-600">
-            Select your favorite artisan roast or snack for fresh direct delivery or wholesale inquiries.
+            {orderModal.intro}
           </p>
         </div>
 
         <form onSubmit={handleWhatsAppOrder} className="mt-6 flex flex-col gap-5">
           {/* Order Type Pills */}
           <div className="flex rounded-2xl bg-black/5 p-1">
-            {[
-              { id: "retail", label: "Retail / Personal Order" },
-              { id: "wholesale", label: "Wholesale / Cafe Inquiries" },
-            ].map(({ id, label }) => (
+            {orderTypes.map(({ id, label }) => (
               <button
                 key={id}
                 type="button"
@@ -133,7 +133,7 @@ Please confirm availability and pricing. Thank you!`;
           {/* Product Selection */}
           <div>
             <label className="label text-espresso-800/70">
-              Select Product
+              {orderModal.fieldLabels.product}
             </label>
             <div className="grid grid-cols-2 gap-3">
               {Pdetails.map((p, idx) => (
@@ -161,7 +161,7 @@ Please confirm availability and pricing. Thank you!`;
           {currentProduct.packSizes && (
             <div>
               <label className="label text-espresso-800/70">
-                Package Size / Variant
+                {orderModal.fieldLabels.pack}
               </label>
               <div className="flex flex-wrap gap-2">
                 {currentProduct.packSizes.map((size) => (
@@ -182,12 +182,12 @@ Please confirm availability and pricing. Thank you!`;
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="label text-espresso-800/70">
-                Quantity
+                {orderModal.fieldLabels.quantity}
               </label>
               <div className="flex items-center rounded-xl border border-black/15 bg-white p-1">
                 <button
                   type="button"
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  onClick={() => setQuantity((q) => Math.max(orderModal.minQuantity, q - orderModal.quantityStep))}
                   className="h-8 w-8 rounded-lg bg-black/5 text-base font-bold transition hover:bg-black/10"
                 >
                   -
@@ -195,7 +195,7 @@ Please confirm availability and pricing. Thank you!`;
                 <span className="flex-1 text-center font-bold text-sm">{quantity}</span>
                 <button
                   type="button"
-                  onClick={() => setQuantity((q) => q + 1)}
+                  onClick={() => setQuantity((q) => q + orderModal.quantityStep)}
                   className="h-8 w-8 rounded-lg bg-black/5 text-base font-bold transition hover:bg-black/10"
                 >
                   +
@@ -205,13 +205,13 @@ Please confirm availability and pricing. Thank you!`;
 
             <div>
               <label className="label text-espresso-800/70">
-                Your Name
+                {orderModal.fieldLabels.name}
               </label>
               <input
                 type="text"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="e.g. Kasun Fernando"
+                placeholder={orderModal.placeholders.name}
                 className="field"
               />
             </div>
@@ -220,13 +220,13 @@ Please confirm availability and pricing. Thank you!`;
           {/* Phone Number */}
           <div>
             <label className="label text-espresso-800/70">
-              Phone / WhatsApp Number
+              {orderModal.fieldLabels.phone}
             </label>
             <input
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="+94 77 123 4567"
+              placeholder={orderModal.placeholders.phone}
               className="field"
             />
           </div>
@@ -234,13 +234,13 @@ Please confirm availability and pricing. Thank you!`;
           {/* Delivery Note */}
           <div>
             <label className="label text-espresso-800/70">
-              Special Instructions / Delivery Location
+              {orderModal.fieldLabels.notes}
             </label>
             <textarea
               rows={2}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Colombo delivery / Wholesale quote for 50kg..."
+              placeholder={orderModal.placeholders.notes}
               className="field resize-none"
             />
           </div>
@@ -248,10 +248,10 @@ Please confirm availability and pricing. Thank you!`;
           {/* Order Summary & Submit Button */}
           <div className="mt-2 rounded-2xl bg-emerald-500/10 p-4 border border-emerald-500/20">
             <div className="flex items-center justify-between text-xs font-semibold text-emerald-900">
-              <span>Direct WhatsApp Instant Support</span>
+              <span>{orderModal.assurance.title}</span>
               <span className="inline-flex items-center gap-1">
                 <Zap size={13} />
-                Fast Response
+                {orderModal.assurance.badge}
               </span>
             </div>
           </div>
@@ -261,7 +261,7 @@ Please confirm availability and pricing. Thank you!`;
             className="btn-whatsapp w-full py-3.5"
           >
             <MessageCircle size={18} />
-            Send Order via WhatsApp
+            {orderModal.submitCta}
           </button>
         </form>
       </div>
