@@ -1,5 +1,6 @@
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { ProductSection } from "../data/Pdetails";
+import StarButton from "./StarButton";
 
 function Description({
   header,
@@ -80,13 +81,9 @@ function Description({
       {/* Action Buttons */}
       <div className="mt-4 flex flex-wrap items-center gap-4">
         {btn && (
-          <button
-            onClick={btn}
-            className={`btn px-8 ${isWhite ? "btn-primary" : "btn-dark"}`}
-          >
-            <span>{btnText}</span>
-            <ArrowRight className="btn-arrow" size={18} />
-          </button>
+          <StarButton onClick={btn} tone={isWhite ? "dark" : "light"}>
+            {btnText}
+          </StarButton>
         )}
 
         {secondaryBtn && (

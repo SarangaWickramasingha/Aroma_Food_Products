@@ -25,6 +25,84 @@
   --color-cream-200: #F9F4EC;
   --color-cream-300: #EDE5D8;
   --color-gold-soft: #E8D5B0;
+
+  /* Animated CTA button */
+  --animate-gradient-border: gradient-border 20s ease-in-out infinite;
+  --animate-particles-1: move-particles-1 20s linear infinite;
+  --animate-particles-2: move-particles-2 18s linear infinite;
+  --animate-particles-4: move-particles-4 15s linear infinite;
+
+  @keyframes gradient-border {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes move-particles-1 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-25px, 15px) rotate(90deg);
+    }
+    40% {
+      transform: translate(20px, -20px) rotate(180deg);
+    }
+    60% {
+      transform: translate(-15px, -25px) rotate(270deg);
+    }
+    80% {
+      transform: translate(25px, 20px) rotate(320deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+
+  @keyframes move-particles-2 {
+    0% {
+      transform: translate(0, 0) rotate(20deg);
+    }
+    25% {
+      transform: translate(20px, -15px) rotate(110deg);
+    }
+    50% {
+      transform: translate(-20px, 20px) rotate(200deg);
+    }
+    75% {
+      transform: translate(15px, 15px) rotate(290deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(380deg);
+    }
+  }
+
+  @keyframes move-particles-4 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+      transform: translate(-30px, 20px) rotate(90deg);
+    }
+    40% {
+      transform: translate(25px, -25px) rotate(180deg);
+    }
+    60% {
+      transform: translate(-20px, -30px) rotate(270deg);
+    }
+    80% {
+      transform: translate(30px, 25px) rotate(320deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
 }
 
 /* Custom Scrollbar */
