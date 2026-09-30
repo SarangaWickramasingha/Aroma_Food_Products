@@ -38,7 +38,14 @@ const Navbar = ({
     contact: scrollToContact,
   };
 
-  const mobileLinks = navItems.map(({ section, mobileTitle }) => ({
+  /**
+   * The "Contact Us" CTA is the only contact control in the bar, so the contact
+   * section is dropped from both the nav list and the drawer. `navItems` keeps
+   * the entry because the footer still links to it.
+   */
+  const navSections = navItems.filter(({ section }) => section !== 'contact');
+
+  const mobileLinks = navSections.map(({ section, mobileTitle }) => ({
     title: mobileTitle,
     section,
     target: scrollHandlers[section],
@@ -65,7 +72,7 @@ const Navbar = ({
         {/* Desktop Nav Items */}
         <nav aria-label="Main navigation" className="hidden items-center gap-8 lg:flex xl:gap-12">
           <ul className="flex items-center gap-8 text-[15px] font-medium text-white/90 xl:gap-10">
-            {navItems.map(({ section, title }) => (
+            {navSections.map(({ section, title }) => (
               <NavItem
                 key={section}
                 title={title}
@@ -76,18 +83,15 @@ const Navbar = ({
           </ul>
 
           <CtaButton onClick={() => handleNav(scrollToContact)}>
-            {navCta.desktop}
+            {navCta.label}
           </CtaButton>
         </nav>
 
         {/* Mobile Hamburger Button */}
         <div className="flex items-center gap-3 lg:hidden">
-          <button
-            onClick={() => handleNav(scrollToContact)}
-            className="cursor-pointer rounded-full bg-brand-red px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-red-hover"
-          >
-            {navCta.mobile}
-          </button>
+          <CtaButton onClick={() => handleNav(scrollToContact)}>
+            {navCta.label}
+          </CtaButton>
 
           <button
             type="button"

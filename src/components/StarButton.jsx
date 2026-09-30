@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-function StarButton({ children, onClick, tone = "dark", size = "md", arrow = true, className = "" }) {
+function StarButton({ children, onClick, tone = "dark", className = "" }) {
   const isLight = tone === "light";
 
   const fill = isLight
@@ -11,11 +11,7 @@ function StarButton({ children, onClick, tone = "dark", size = "md", arrow = tru
     ? "shadow-[0_6px_18px_rgba(18,10,5,0.28)] transition-shadow duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-[0_10px_24px_rgba(18,10,5,0.35)]"
     : "p-[2px] shadow-[0_0_20px_rgba(0,0,0,0.3)] backdrop-blur-[5px] transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] animate-gradient-border hover:brightness-110 hover:shadow-[0_0_25px_rgba(0,0,0,0.4),0_0_10px_rgba(196,74,58,0.2)] hover:backdrop-blur-[8px] hover:[animation-duration:10s]";
 
-  const sizing = size === "sm"
-    ? "px-5 py-[9px] text-[11px] font-semibold tracking-[0.18em] shadow-[0_3px_8px_rgba(18,10,5,0.45),0_0_8px_rgba(196,74,58,0.15),inset_0_0_8px_rgba(196,74,58,0.05)] hover:shadow-[0_5px_10px_rgba(18,10,5,0.55),0_0_14px_rgba(196,74,58,0.3),inset_0_0_12px_rgba(196,74,58,0.1)]"
-    : "px-10 py-[15px] text-[16px] font-medium tracking-[2px]";
-
-  const labelGap = size === "sm" ? "gap-2" : "gap-3";
+  const sizing = "px-10 py-[15px] text-[16px] font-medium tracking-[2px]";
 
   const label = isLight
     ? "brightness-[1.15] contrast-[1.2] [text-shadow:0_0_10px_rgba(255,253,248,0.25),0_0_20px_rgba(255,253,248,0.08)] group-hover:brightness-[1.3] group-hover:contrast-[1.35]"
@@ -43,9 +39,9 @@ function StarButton({ children, onClick, tone = "dark", size = "md", arrow = tru
           className="absolute inset-0 z-[4] pointer-events-none opacity-85 mix-blend-screen blur-[0.3px] animate-particles-4 transition-all duration-[400ms] group-hover:opacity-100 group-hover:blur-0 bg-[radial-gradient(3.5px_3.5px_at_15%_25%,rgba(255,253,248,1),rgba(0,0,0,0)),radial-gradient(3px_3px_at_85%_15%,rgba(255,253,248,0.98),rgba(0,0,0,0)),radial-gradient(3.5px_3.5px_at_75%_75%,rgba(255,253,248,1),rgba(0,0,0,0)),radial-gradient(2.8px_2.8px_at_25%_85%,rgba(255,253,248,0.95),rgba(0,0,0,0)),radial-gradient(4px_4px_at_65%_35%,rgba(255,253,248,1),rgba(0,0,0,0))]"
         />
 
-        <span className={`relative z-[5] flex items-center ${labelGap} transition-all duration-[400ms] ${label}`}>
+        <span className={`relative z-[5] flex items-center gap-3 transition-all duration-[400ms] ${label}`}>
           <span>{children}</span>
-          {arrow && <ArrowRight size={18} />}
+          <ArrowRight size={18} />
         </span>
       </button>
     </span>

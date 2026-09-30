@@ -108,9 +108,9 @@ export const footerRoasts = [
   { id: "roast-4", title: "Estate Reserve Selection" },
 ];
 
+/** The single contact control in the nav bar, shown at every breakpoint. */
 export const navCta = {
-  desktop: "Contact Us",
-  mobile: "Contact",
+  label: "Contact Us",
   drawerAriaLabel: "Toggle navigation menu",
 };
 
