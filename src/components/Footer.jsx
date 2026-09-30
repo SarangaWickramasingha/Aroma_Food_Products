@@ -30,36 +30,6 @@ const Footer = ({
       <div className="absolute bottom-0 right-1/4 -z-0 h-96 w-96 rounded-full bg-brand-amber/10 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-        {/* Top Callout Banner */}
-        <div className="mb-16 flex flex-col items-center justify-between gap-8 rounded-3xl bg-gradient-to-r from-espresso-800 via-[#3A2214] to-espresso-800 p-8 border border-white/10 shadow-2xl sm:p-12 lg:flex-row">
-          <div className="max-w-xl text-center lg:text-left">
-            <span className="section-kicker text-gold-soft">
-              {footerCopy.calloutKicker}
-            </span>
-            <h3 className="heading-serif mt-2 text-2xl text-white sm:text-3xl">
-              {footerCopy.calloutHeading}
-            </h3>
-            <p className="mt-2 text-sm text-white/70">
-              {footerCopy.calloutBody}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={scrollToContact}
-              className="btn btn-primary px-8"
-            >
-              {footerCopy.calloutPrimary}
-            </button>
-            <button
-              onClick={scrollToStory}
-              className="btn btn-ghost-light px-7"
-            >
-              {footerCopy.calloutSecondary}
-            </button>
-          </div>
-        </div>
-
         {/* Main Grid */}
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 pb-16 border-b border-white/10">
           {/* Col 1: Brand Info */}

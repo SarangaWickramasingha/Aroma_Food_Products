@@ -115,12 +115,6 @@ export const navCta = {
 };
 
 export const footerCopy = {
-  calloutKicker: "Pure Ceylon Roastery",
-  calloutHeading: "Experience the Aroma of Highland Ceylon Coffee",
-  calloutBody:
-    "Direct estate-to-cup coffee crafted with artisan passion in Ratnapura, Sri Lanka.",
-  calloutPrimary: "Get in Touch",
-  calloutSecondary: "Explore Our Story",
   exploreHeading: "Explore",
   roastsHeading: "Coffee Roasts",
   backToTop: "Back to Top",
