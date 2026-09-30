@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import NavItem from './NavItem';
 import Logo from './Logo';
+import CtaButton from './CtaButton';
 import { navItems, navCta, site } from '../data/site';
 
 const Navbar = ({
@@ -74,12 +75,9 @@ const Navbar = ({
             ))}
           </ul>
 
-          <button
-            onClick={() => handleNav(scrollToContact)}
-            className="cursor-pointer rounded-full bg-brand-red px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:bg-brand-red-hover hover:shadow-lg hover:scale-105 focus:outline-none"
-          >
+          <CtaButton onClick={() => handleNav(scrollToContact)}>
             {navCta.desktop}
-          </button>
+          </CtaButton>
         </nav>
 
         {/* Mobile Hamburger Button */}

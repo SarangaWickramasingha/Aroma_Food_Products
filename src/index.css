@@ -282,6 +282,73 @@
     transform: translateX(6px);
   }
 
+  /* Expanding-circle CTA — glass pill, red label, floods espresso on hover */
+  .cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    margin: auto;
+    padding: 8px 16px;
+    border: 2px solid rgba(255, 248, 248, 0.1);
+    border-radius: 9999px;
+    background-color: rgba(255, 253, 248, 0.01);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    border-radius: 9999px;
+    background-color: var(--color-cream-100);
+    width: 26px;
+    height: 100%;
+    opacity: 0.01;
+    transition: all 0.8s ease;
+  }
+  .cta:hover::before {
+    width: 100%;
+    background-color: var(--color-espresso-900);
+    opacity: 1;
+  }
+  .cta:active {
+    transform: scale(0.95);
+  }
+  .cta span {
+    position: relative;
+    z-index: 1;
+    padding-right: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-brand-red);
+    transition: color 0.4s ease;
+  }
+  .cta:hover span {
+    color: var(--color-cream-100);
+  }
+  .cta svg {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--color-espresso-900);
+    stroke-width: 2;
+    transform: translateY(-50%);
+    transition: stroke 0.4s ease, transform 0.5s ease;
+  }
+  .cta:hover svg {
+    stroke: var(--color-cream-100);
+    transform: translate(-3px, -50%);
+  }
+
   /* Pills & badges */
   .pill {
     display: inline-flex;
