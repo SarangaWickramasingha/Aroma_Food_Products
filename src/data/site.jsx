@@ -169,7 +169,7 @@ export const socialChannels = [
   },
   {
     id: "facebook",
-    label: "Chat On Facebook",
+    label: "Follow on Facebook",
     Icon: FacebookIcon,
     href: () => site.contact.facebookUrl,
     theme: {
