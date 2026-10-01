@@ -26,7 +26,7 @@ export const site = {
      * number in international form with no symbols, so store it that way and
      * format at render time rather than keeping two copies in sync.
      */
-    whatsappNumber: "94771234567",
+    whatsappNumber: "94788242522",
     whatsappGreeting:
       "Hello%20Aroma%20Food%20Products!%20I%20have%20an%20inquiry.",
     address: "Kambadola, Dela, Rathnapura, Sri Lanka",

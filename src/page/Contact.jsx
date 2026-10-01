@@ -4,18 +4,17 @@ import {
   MapPin,
   CheckCircle2,
   Send,
-  Plus,
-  Minus,
   MessageCircle,
 } from "lucide-react";
 import contactBg from "../assets/Contactus.png";
 import {
   subjects,
-  faqs,
   contactSection,
   emptyForm,
 } from "../data/Contactdetails";
+import { faqs, faqHeading } from "../data/Faqdetails";
 import { site, whatsappLink } from "../data/site";
+import FaqItem from "../components/FaqItem";
 
 const Contact = forwardRef((props, ref) => {
   const [form, setForm] = useState(emptyForm);
@@ -123,7 +122,7 @@ const Contact = forwardRef((props, ref) => {
                   href={whatsappLink()}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-whatsapp rounded-2xl p-3.5"
+                  className="relative inline-flex w-full items-center justify-center gap-2 rounded-[1em] border-4 border-[#25D366] bg-[#1EBE5D] px-12 py-4 text-[15px] font-bold text-white text-shadow-[0_0_0.5em_#25D366] shadow-[0_0_1em_0.25em_#25D366,0_0_4em_1em_rgba(37,211,102,0.781),inset_0_0_0.75em_0.25em_#25D366] transition-all duration-300 after:pointer-events-none after:absolute after:top-[120%] after:left-0 after:h-full after:w-full after:content-[''] after:bg-[rgba(37,211,102,0.781)] after:blur-[2em] after:opacity-70 after:[transform:perspective(1.5em)_rotateX(35deg)_scale(1,0.6)] hover:bg-[#25D366] hover:text-white hover:shadow-[0_0_1em_0.25em_#25D366,0_0_4em_2em_rgba(37,211,102,0.781),inset_0_0_0.75em_0.25em_#25D366] active:shadow-[0_0_0.6em_0.25em_#25D366,0_0_2.5em_2em_rgba(37,211,102,0.781),inset_0_0_0.5em_0.25em_#25D366]"
                 >
                   <MessageCircle size={18} />
                   <span>{contactSection.whatsappCta}</span>
@@ -262,29 +261,17 @@ const Contact = forwardRef((props, ref) => {
         {/* Interactive FAQ Accordion */}
         <div className="mt-16 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-10 backdrop-blur-md text-white">
           <h3 className="heading-serif text-xl sm:text-2xl text-center mb-6">
-            {contactSection.faqHeading}
-          </h3>          <div className="flex flex-col gap-3 max-w-3xl mx-auto">
+            {faqHeading}
+          </h3>
+          <div className="flex flex-col gap-3 max-w-3xl mx-auto">
             {faqs.map((faq, idx) => (
-              <div
-                key={faq.q}
-                className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden transition"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="flex w-full cursor-pointer items-center justify-between p-4 text-left font-semibold text-sm sm:text-base hover:text-gold-soft"
-                >
-                  <span>{faq.q}</span>
-                  <span className="transition-transform duration-300">
-                    {openFaq === idx ? <Minus size={18} /> : <Plus size={18} />}
-                  </span>
-                </button>
-                {openFaq === idx && (
-                  <div className="px-4 pb-4 pt-1 text-sm text-white/75 leading-relaxed border-t border-white/5">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
+              <FaqItem
+                key={faq.id}
+                question={faq.q}
+                answer={faq.a}
+                isOpen={openFaq === idx}
+                onToggle={() => setOpenFaq(openFaq === idx ? null : idx)}
+              />
             ))}
           </div>
         </div>

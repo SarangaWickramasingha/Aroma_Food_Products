@@ -34,7 +34,7 @@ export const orderModal = {
   },
   placeholders: {
     name: "e.g. Kasun Fernando",
-    phone: "+94 77 123 4567",
+    phone: "+94 78 824 2522",
     notes: "e.g. Colombo delivery / Wholesale quote for 50kg...",
   },
   assurance: {
