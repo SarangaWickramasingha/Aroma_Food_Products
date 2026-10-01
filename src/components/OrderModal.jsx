@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { X, Zap, MessageCircle } from "lucide-react";
+import { X, Zap } from "lucide-react";
 import Pdetails from "../data/Pdetails";
 import {
   orderTypes,
   orderModal,
   buildOrderMessage,
 } from "../data/Orderdetails";
-import { whatsappLink } from "../data/site";
+import { getChannel } from "../data/site";
+import SocialButton from "./SocialButton";
 
 const OrderModal = ({ isOpen, onClose, defaultProductIndex = 0 }) => {
   const [selectedProductIndex, setSelectedProductIndex] = useState(defaultProductIndex);
@@ -73,7 +74,10 @@ const OrderModal = ({ isOpen, onClose, defaultProductIndex = 0 }) => {
       notes,
     });
 
-    window.open(whatsappLink(encodeURIComponent(message)), "_blank");
+    window.open(
+      getChannel("whatsapp").href(encodeURIComponent(message)),
+      "_blank"
+    );
     onClose();
   };
 
@@ -256,13 +260,12 @@ const OrderModal = ({ isOpen, onClose, defaultProductIndex = 0 }) => {
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="btn-whatsapp w-full py-3.5"
-          >
-            <MessageCircle size={18} />
-            {orderModal.submitCta}
-          </button>
+          <SocialButton
+            channel={getChannel("whatsapp")}
+            label={orderModal.submitCta}
+            onClick={handleWhatsAppOrder}
+            className="py-3.5"
+          />
         </form>
       </div>
     </div>

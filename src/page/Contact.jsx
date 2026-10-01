@@ -1,11 +1,5 @@
 import { forwardRef, useState } from "react";
-import {
-  Mail,
-  MapPin,
-  CheckCircle2,
-  Send,
-  MessageCircle,
-} from "lucide-react";
+import { Mail, MapPin, CheckCircle2, Send } from "lucide-react";
 import contactBg from "../assets/Contactus.png";
 import {
   subjects,
@@ -13,8 +7,9 @@ import {
   emptyForm,
 } from "../data/Contactdetails";
 import { faqs, faqHeading } from "../data/Faqdetails";
-import { site, whatsappLink } from "../data/site";
+import { site, socialChannels } from "../data/site";
 import FaqItem from "../components/FaqItem";
+import SocialButton from "../components/SocialButton";
 
 const Contact = forwardRef((props, ref) => {
   const [form, setForm] = useState(emptyForm);
@@ -117,16 +112,16 @@ const Contact = forwardRef((props, ref) => {
                   </div>
                 </div>
 
-                {/* WhatsApp Chat Button */}
-                <a
-                  href={whatsappLink()}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="relative inline-flex w-full items-center justify-center gap-2 rounded-[1em] border-4 border-[#25D366] bg-[#1EBE5D] px-12 py-4 text-[15px] font-bold text-white text-shadow-[0_0_0.5em_#25D366] shadow-[0_0_1em_0.25em_#25D366,0_0_4em_1em_rgba(37,211,102,0.781),inset_0_0_0.75em_0.25em_#25D366] transition-all duration-300 after:pointer-events-none after:absolute after:top-[120%] after:left-0 after:h-full after:w-full after:content-[''] after:bg-[rgba(37,211,102,0.781)] after:blur-[2em] after:opacity-70 after:[transform:perspective(1.5em)_rotateX(35deg)_scale(1,0.6)] hover:bg-[#25D366] hover:text-white hover:shadow-[0_0_1em_0.25em_#25D366,0_0_4em_2em_rgba(37,211,102,0.781),inset_0_0_0.75em_0.25em_#25D366] active:shadow-[0_0_0.6em_0.25em_#25D366,0_0_2.5em_2em_rgba(37,211,102,0.781),inset_0_0_0.5em_0.25em_#25D366]"
-                >
-                  <MessageCircle size={18} />
-                  <span>{contactSection.whatsappCta}</span>
-                </a>
+                {/* Messaging channel buttons, side by side at half width */}
+                <div className="grid grid-cols-2 gap-3">
+                  {socialChannels.map((channel) => (
+                    <SocialButton
+                      key={channel.id}
+                      channel={channel}
+                      href={channel.href()}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 

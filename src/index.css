@@ -521,23 +521,62 @@
     letter-spacing: 0.05em;
   }
 
-  /* WhatsApp CTA button */
-  .btn-whatsapp {
+  /* Messaging CTA button. Brand colors come in as --glow-* custom properties
+     set by SocialButton, so one rule serves every channel. */
+  .btn-glow {
+    position: relative;
     display: inline-flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 9999px;
-    background-color: #25D366;
+    padding: 0.875rem 0.75rem;
+    border: 4px solid var(--glow-border);
+    border-radius: 1em;
+    background-color: var(--glow-base);
     color: #fff;
     font-size: 14px;
     font-weight: 700;
-    box-shadow: 0 10px 25px rgb(37 211 102 / 0.25);
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 0 0.5em var(--glow-border);
+    box-shadow:
+      0 0 1em 0.25em var(--glow-border),
+      0 0 4em 1em var(--glow-glow),
+      inset 0 0 0.75em 0.25em var(--glow-border);
     transition: all 0.3s ease;
   }
-  .btn-whatsapp:hover {
-    background-color: #1EBE5D;
-    box-shadow: 0 15px 30px rgb(37 211 102 / 0.35);
+  /* Channel icons never stretch or shrink, so both buttons keep one size. */
+  .btn-glow > svg {
+    flex-shrink: 0;
+  }
+  /* Soft reflection pooled under the button. */
+  .btn-glow::after {
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-color: var(--glow-glow);
+    filter: blur(2em);
+    opacity: 0.7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+  }
+  .btn-glow:hover {
+    background-color: var(--glow-hover);
+    color: #fff;
+    box-shadow:
+      0 0 1em 0.25em var(--glow-border),
+      0 0 4em 2em var(--glow-glow),
+      inset 0 0 0.75em 0.25em var(--glow-border);
+  }
+  .btn-glow:active {
+    box-shadow:
+      0 0 0.6em 0.25em var(--glow-border),
+      0 0 2.5em 2em var(--glow-glow),
+      inset 0 0 0.5em 0.25em var(--glow-border);
   }
 
   /* Glassmorphism */

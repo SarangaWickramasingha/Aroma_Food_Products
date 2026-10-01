@@ -24,7 +24,6 @@ export const contactSection = {
   copiedLabel: "Copied",
   copyResetMs: 3000,
   locationLabel: "Roastery & Estate",
-  whatsappCta: "Chat On WhatsApp",
   successMessage:
     "Message received! Our master roaster team will contact you shortly.",
   resendCta: "Send another inquiry",
