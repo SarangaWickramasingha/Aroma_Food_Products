@@ -112,8 +112,8 @@ const Contact = forwardRef((props, ref) => {
                   </div>
                 </div>
 
-                {/* Messaging channel buttons, side by side at half width */}
-                <div className="grid grid-cols-2 gap-3">
+                {/* Messaging channel buttons, stacked full width */}
+                <div className="grid grid-cols-1 gap-3">
                   {socialChannels.map((channel) => (
                     <SocialButton
                       key={channel.id}
