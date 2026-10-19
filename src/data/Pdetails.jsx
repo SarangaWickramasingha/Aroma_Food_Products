@@ -1,4 +1,4 @@
-import cfepacket from '../assets/coffee-packet.png';
+import cfepacket from '../assets/Kraft Coffee Pouch with Astronauts.png';
 import chipsbox from '../assets/chipsbox.png';
 
 const Pdetails = [

@@ -7,9 +7,9 @@ import {
   emptyForm,
 } from "../data/Contactdetails";
 import { faqs, faqHeading } from "../data/Faqdetails";
-import { site, socialChannels } from "../data/site";
+import { site } from "../data/site";
 import FaqItem from "../components/FaqItem";
-import SocialButton from "../components/SocialButton";
+import SocialCards from "../components/SocialCards";
 
 const Contact = forwardRef((props, ref) => {
   const [form, setForm] = useState(emptyForm);
@@ -112,15 +112,9 @@ const Contact = forwardRef((props, ref) => {
                   </div>
                 </div>
 
-                {/* Messaging channel buttons, stacked full width */}
-                <div className="grid grid-cols-1 gap-3">
-                  {socialChannels.map((channel) => (
-                    <SocialButton
-                      key={channel.id}
-                      channel={channel}
-                      href={channel.href()}
-                    />
-                  ))}
+                {/* Social media card grid — hover to reveal icons */}
+                <div className="mt-8 flex justify-center">
+                  <SocialCards />
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import bgcoffee from '../assets/bg-img-coffee.png';
-import cfepacket from '../assets/coffee-packet.png';
+import cfepacket from '../assets/Kraft Coffee Pouch with Astronauts.png';
 import bgchips from '../assets/bg-img-chips.png';
 import chipsbox from '../assets/chipsbox.png';
 
