@@ -580,65 +580,45 @@
       inset 0 0 0.5em 0.25em var(--glow-border);
   }
 
-  /* Contact-page social card grid — hover-reveal icons, 2x2 glassmorphic
-     cards over a site-colored gradient backdrop. Each card's fill comes from
-     --card-color set inline by SocialCards. */
+  /* Contact-page social card grid — hover-reveal icons over warm gold-tinted
+     frosted tiles. Cards are blurred at rest and clear on grid hover. Each
+     card's fill comes from --card-color set by SocialCards. */
   .social-grid {
     position: relative;
     z-index: 1;
     display: flex;
-    flex-wrap: wrap;
-    width: 8.5em;
     align-items: center;
     justify-content: center;
-  }
-
-  .social-grid__back {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #c44a3a, #e28834, #d4af37);
-    box-shadow: inset 0 0 180px 5px #ffffff;
-    transition: opacity 0.4s ease-in-out;
+    gap: 0.85rem;
+    width: 100%;
+    max-width: 24rem;
+    padding: 0.85rem 0.5rem;
   }
 
   .social-grid__card {
     display: flex;
-    width: 60px;
-    height: 60px;
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    border: 1px solid transparent;
-    border-top-left-radius: 10px;
-    background: rgba(255, 255, 255, 0.596);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(232, 213, 176, 0.18);
+    border-radius: 18px;
+    background: rgba(232, 213, 176, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* Frosted at rest — clears when the whole grid is hovered. */
+    filter: blur(7px);
     transition:
-      0.4s ease-in-out,
-      0.2s background-color ease-in-out;
-  }
-
-  /* 2x2 grid (children 3-6; 1-2 are backdrop + label): round only the
-     outer corners at rest. Card 1 keeps the default top-left radius. */
-  .social-grid__card:nth-child(4) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 10px;
-  }
-
-  .social-grid__card:nth-child(5) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 10px;
-  }
-
-  .social-grid__card:nth-child(6) {
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 10px;
+      filter 0.35s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
   }
 
   .social-grid__icon {
     opacity: 0;
-    transition: 0.2s ease-in-out;
+    transition: opacity 0.25s ease;
   }
 
   .social-grid__icon--whatsapp {
@@ -657,16 +637,8 @@
     fill: #000000;
   }
 
-  .social-grid:hover .social-grid__back {
-    opacity: 0;
-  }
-
   .social-grid:hover .social-grid__card {
-    margin: 0.2em;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    filter: blur(0);
   }
 
   .social-grid:hover .social-grid__icon {
@@ -675,11 +647,12 @@
 
   .social-grid:hover .social-grid__label {
     opacity: 0;
-    z-index: -3;
   }
 
   .social-grid__card:hover {
     background-color: var(--card-color);
+    box-shadow: 0 0 1.4em -0.2em var(--card-color);
+    transform: translateY(-2px);
   }
 
   .social-grid__card:hover .social-grid__icon {
@@ -687,19 +660,43 @@
   }
 
   /* Threads is black, so a near-black hover keeps it visible on dark glass. */
-  .social-grid__card:nth-child(6):hover {
+  .social-grid__card:nth-child(5):hover {
     background-color: #1f1f1f;
+    box-shadow: 0 0 1.4em -0.2em rgba(255, 255, 255, 0.35);
   }
 
   .social-grid__label {
     position: absolute;
+    inset: 0;
     z-index: 3;
-    color: #fff;
-    font-size: 0.7em;
-    font-weight: bold;
-    letter-spacing: 0.33em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold-soft);
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.9;
+    letter-spacing: 0.3em;
     text-align: center;
-    transition: 0.4s ease-in-out;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  /* Touch devices have no hover — clear the blur, show icons, drop label. */
+  @media (hover: none) {
+    .social-grid__card {
+      filter: blur(0);
+    }
+
+    .social-grid__icon {
+      opacity: 1;
+    }
+
+    .social-grid__label {
+      display: none;
+    }
   }
 
   /* Glassmorphism */

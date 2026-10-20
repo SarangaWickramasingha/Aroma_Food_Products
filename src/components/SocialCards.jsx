@@ -25,8 +25,11 @@ const glyphs = {
  */
 const SocialCards = () => (
   <div className="social-grid">
-    <div className="social-grid__back" aria-hidden="true" />
-    <p className="social-grid__label">HOVER<br /><br />FOR<br /><br />SOCIAL</p>
+    <p className="social-grid__label">
+      Hover for
+      <br />
+      social
+    </p>
     {socialChannels.map((channel) => {
       const { Icon, color } = glyphs[channel.id];
       return (
@@ -39,7 +42,7 @@ const SocialCards = () => (
           className="social-grid__card"
           style={{ "--card-color": color }}
         >
-          <Icon className={`social-grid__icon social-grid__icon--${channel.id}`} height={28} width={28} />
+          <Icon className={`social-grid__icon social-grid__icon--${channel.id}`} height={30} width={30} />
         </a>
       );
     })}
