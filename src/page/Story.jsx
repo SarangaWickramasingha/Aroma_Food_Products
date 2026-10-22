@@ -10,14 +10,14 @@ const Story = forwardRef((props, ref) => {
     <section
       id="story"
       ref={ref}
-      className="relative flex min-h-screen flex-col items-center overflow-x-hidden px-6 py-24 transition-colors duration-700 sm:px-10 lg:px-16 bg-coffee-bg"
+      className="relative flex min-h-screen flex-col items-center overflow-x-hidden px-5 py-16 transition-colors duration-700 sm:px-10 sm:py-24 lg:px-16 bg-coffee-bg"
     >
       {/* Decorative ambient background accents */}
       <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-brand-red/5 blur-3xl" />
       <div className="pointer-events-none absolute bottom-20 -right-20 h-80 w-80 rounded-full bg-brand-amber/5 blur-3xl" />
 
       {/* Page Title Header */}
-      <div className="mb-16 text-center max-w-2xl">
+      <div className="mb-10 max-w-2xl text-center sm:mb-16">
         <p className="eyebrow text-brand-red">
           {StorySection.eyebrow}
         </p>
@@ -31,7 +31,7 @@ const Story = forwardRef((props, ref) => {
       </div>
 
       {/* Cards Layout Container */}
-      <div className="relative flex w-full max-w-5xl flex-col items-center gap-12 sm:gap-16">
+      <div className="relative flex w-full max-w-5xl flex-col items-center gap-10 sm:gap-16">
         {/* Subtle center timeline line for desktop */}
         <div className="pointer-events-none absolute top-10 bottom-10 left-1/2 -ml-[1px] hidden w-[2px] bg-gradient-to-b from-transparent via-black/15 to-transparent md:block" />
 

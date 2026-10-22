@@ -79,7 +79,7 @@ function Description({
       )}
 
       {/* Action Buttons */}
-      <div className="mt-4 flex flex-wrap items-center gap-4">
+      <div className="mt-2 flex flex-wrap items-center gap-3 sm:mt-4 sm:gap-4">
         {btn && (
           <StarButton onClick={btn} tone={isWhite ? "dark" : "light"}>
             {btnText}
@@ -89,7 +89,7 @@ function Description({
         {secondaryBtn && (
           <button
             onClick={secondaryBtn}
-            className={`btn px-7 ${isWhite ? "btn-ghost-light" : "btn-ghost-dark"}`}
+            className={`btn w-full px-7 sm:w-auto ${isWhite ? "btn-ghost-light" : "btn-ghost-dark"}`}
           >
             <MessageCircle size={18} />
             <span>{secondaryBtnText}</span>

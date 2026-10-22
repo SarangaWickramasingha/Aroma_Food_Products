@@ -35,7 +35,7 @@ const Contact = forwardRef((props, ref) => {
     <section
       id="contact"
       ref={ref}
-      className="relative flex min-h-screen flex-col items-center bg-cover bg-center px-6 py-24 sm:px-10 lg:px-16"
+      className="relative flex min-h-screen flex-col items-center bg-cover bg-center px-4 py-16 sm:px-10 sm:py-24 lg:px-16"
       style={{ backgroundImage: `url(${contactBg})` }}
     >
       {/* Background Dark & Tint Overlay for contrast */}
@@ -43,7 +43,7 @@ const Contact = forwardRef((props, ref) => {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* Section Header */}
-        <div className="mb-14 text-center">
+        <div className="mb-10 text-center sm:mb-14">
           <p className="eyebrow text-gold-soft">
             {contactSection.eyebrow}
           </p>
@@ -57,9 +57,9 @@ const Contact = forwardRef((props, ref) => {
         </div>
 
         {/* Glassmorphic Contact Card */}
-        <div className="grid w-full grid-cols-1 gap-12 rounded-[36px] border border-white/20 bg-gradient-to-br from-white/[0.12] to-white/[0.04] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-xl sm:p-12 lg:grid-cols-[1fr_1.4fr]">
+        <div className="grid w-full grid-cols-1 gap-8 rounded-3xl border border-white/20 bg-gradient-to-br from-white/[0.12] to-white/[0.04] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.37)] backdrop-blur-xl sm:gap-12 sm:rounded-[36px] sm:p-12 lg:grid-cols-[1fr_1.4fr]">
           {/* Left Column: Contact Information & Quick Actions */}
-          <div className="flex flex-col justify-between text-white border-b border-white/10 pb-8 lg:border-b-0 lg:border-r lg:border-white/10 lg:pr-10 lg:pb-0">
+          <div className="flex min-w-0 flex-col justify-between text-white border-b border-white/10 pb-6 sm:pb-8 lg:border-b-0 lg:border-r lg:border-white/10 lg:pr-10 lg:pb-0">
             <div>
               <h3 className="heading-serif text-2xl md:text-3xl text-white">
                 {contactSection.infoHeading}
@@ -71,16 +71,16 @@ const Contact = forwardRef((props, ref) => {
               {/* Direct Info List */}
               <div className="mt-8 flex flex-col gap-6">
                 {/* Email with copy button */}
-                <div className="flex items-center justify-between rounded-2xl bg-white/5 p-3.5 border border-white/10">
-                  <div className="flex items-center gap-3">
+                <div className="flex flex-col gap-3 rounded-2xl bg-white/5 p-3.5 border border-white/10 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex min-w-0 items-center gap-3">
                     <span className="icon-badge">
                       <Mail size={18} />
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <p className="eyebrow text-white/60">
                         {contactSection.emailLabel}
                       </p>
-                      <p className="text-xs sm:text-sm font-semibold">
+                      <p className="break-all text-xs sm:text-sm font-semibold">
                         {site.contact.email}
                       </p>
                     </div>
@@ -88,7 +88,7 @@ const Contact = forwardRef((props, ref) => {
                   <button
                     type="button"
                     onClick={copyEmail}
-                    className="cursor-pointer rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold hover:bg-white/20 transition inline-flex items-center gap-1"
+                    className="inline-flex shrink-0 cursor-pointer items-center gap-1 self-start rounded-lg bg-white/10 px-3 py-1.5 text-xs font-semibold hover:bg-white/20 transition sm:self-auto"
                   >
                     {copiedEmail ? <CheckCircle2 size={13} /> : null}
                     {copiedEmail
@@ -102,18 +102,18 @@ const Contact = forwardRef((props, ref) => {
                   <span className="icon-badge">
                     <MapPin size={18} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="eyebrow text-white/60">
                       {contactSection.locationLabel}
                     </p>
-                    <p className="text-xs sm:text-sm font-semibold leading-relaxed">
+                    <p className="break-words text-xs sm:text-sm font-semibold leading-relaxed">
                       {site.contact.address}
                     </p>
                   </div>
                 </div>
 
                 {/* Social media card grid — hover to reveal icons */}
-                <div className="mt-8 flex justify-center">
+                <div className="mt-6 flex justify-center sm:mt-8">
                   <SocialCards />
                 </div>
               </div>
@@ -132,7 +132,7 @@ const Contact = forwardRef((props, ref) => {
 
           {/* Right Column: Interactive Form */}
           <form onSubmit={handleSubmit} className="text-white">
-            <h3 className="heading-serif text-2xl md:text-3xl mb-6">
+            <h3 className="heading-serif text-2xl md:text-3xl mb-5 sm:mb-6">
               {contactSection.formHeading}
             </h3>
 
@@ -182,7 +182,7 @@ const Contact = forwardRef((props, ref) => {
                     key={id}
                     type="button"
                     onClick={() => setForm({ ...form, subject: label })}
-                    className={`cursor-pointer rounded-xl px-3.5 py-2 text-xs font-semibold transition-all inline-flex items-center gap-1.5 ${
+                    className={`cursor-pointer rounded-xl px-3.5 py-2.5 text-xs font-semibold transition-all inline-flex items-center gap-1.5 ${
                       form.subject === label
                         ? "bg-brand-red text-white shadow-md ring-1 ring-white/50"
                         : "bg-white/10 text-white/80 hover:bg-white/20"
@@ -216,7 +216,7 @@ const Contact = forwardRef((props, ref) => {
             </div>
 
             {/* Submit Confirmation & Button */}
-            <div className="mt-8 flex flex-col items-end gap-3">
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:items-end">
               {submitted ? (
                 <div className="w-full rounded-2xl bg-emerald-500/20 border border-emerald-500/30 p-4 text-center">
                   <p className="text-sm font-bold text-emerald-300 inline-flex items-center justify-center gap-2">
@@ -237,7 +237,7 @@ const Contact = forwardRef((props, ref) => {
               ) : (
                 <button
                   type="submit"
-                  className="btn btn-primary px-9"
+                  className="btn btn-primary w-full px-9 sm:w-auto"
                 >
                   Submit Inquiry
                   <Send size={16} className="-rotate-12" />
@@ -248,8 +248,8 @@ const Contact = forwardRef((props, ref) => {
         </div>
 
         {/* Interactive FAQ Accordion */}
-        <div className="mt-16 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-10 backdrop-blur-md text-white">
-          <h3 className="heading-serif text-xl sm:text-2xl text-center mb-6">
+        <div className="mt-12 rounded-3xl border border-white/10 bg-black/40 p-4 backdrop-blur-md text-white sm:mt-16 sm:p-10">
+          <h3 className="heading-serif text-xl sm:text-2xl text-center mb-5 sm:mb-6">
             {faqHeading}
           </h3>
           <div className="flex flex-col gap-3 max-w-3xl mx-auto">

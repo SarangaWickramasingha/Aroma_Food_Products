@@ -18,15 +18,17 @@ function StoryCard({
   return (
     <div
       style={{ "--rot": `${rotation}deg` }}
-      className="group relative flex w-full max-w-[390px] flex-col rounded-[2.2rem] p-4 sm:p-4.5
+      className="group relative flex w-full max-w-[390px] flex-col rounded-[2.2rem] p-3.5 sm:p-4.5
         bg-gradient-to-b from-cream-100 via-[#FAF6EE] to-cream-200
         border border-espresso-950/[0.08] ring-1 ring-white/80
         shadow-[0_12px_36px_-10px_rgba(44,26,14,0.12),0_2px_8px_rgba(44,26,14,0.04)]
         transition-all duration-500 ease-out
-        [transform:rotate(var(--rot))]
+        [transform:none]
         hover:shadow-[0_26px_50px_-12px_rgba(44,26,14,0.2),0_8px_20px_rgba(196,74,58,0.08)]
         hover:border-brand-amber/35
-        hover:[transform:rotate(0deg)_translateY(-6px)_scale(1.025)]
+        hover:[transform:translateY(-6px)_scale(1.01)]
+        md:[transform:rotate(var(--rot))]
+        md:hover:[transform:rotate(0deg)_translateY(-6px)_scale(1.025)]
         sm:max-w-[410px]"
     >
       {/* Image Container with Title & Badges Overlay */}

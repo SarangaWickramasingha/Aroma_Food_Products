@@ -24,11 +24,11 @@ const Blog = forwardRef((props, ref) => {
     <section
       id="blog"
       ref={ref}
-      className="min-h-screen bg-coffee-bg px-6 py-24 sm:px-10 lg:px-16"
+      className="min-h-screen bg-coffee-bg px-5 py-16 sm:px-10 sm:py-24 lg:px-16"
     >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center sm:mb-12">
           <p className="eyebrow text-brand-red">
             {BlogSection.eyebrow}
           </p>
@@ -72,7 +72,7 @@ const Blog = forwardRef((props, ref) => {
             pagination={{ clickable: true }}
             navigation
             autoplay={{ delay: 5000, disableOnInteraction: true }}
-            className="!pb-16"
+            className="!pb-14 sm:!pb-16"
           >
             {filteredBlogs.map((blog) => (
               <SwiperSlide key={blog.id} className="flex justify-center h-auto">

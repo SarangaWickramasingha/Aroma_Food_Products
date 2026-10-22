@@ -65,7 +65,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-coffee-bg text-espresso-900 font-sans">
+    <div className="relative min-h-screen overflow-x-clip bg-coffee-bg text-espresso-900 font-sans">
       {/* Global Fixed Floating Navigation */}
       <Navbar
         scrollToHome={scrollToHome}

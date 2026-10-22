@@ -17,7 +17,7 @@ const SlideInfo = ({ product }) => {
 
   return (
     <div
-      className="flex w-full max-w-[420px] flex-col gap-6 rounded-3xl border border-black/5 p-6 shadow-md sm:p-8"
+      className="flex w-full max-w-[420px] flex-col gap-5 rounded-3xl border border-black/5 p-5 shadow-md sm:gap-6 sm:p-8"
       style={{ backgroundColor: cardBg }}
     >
       {/* ── Circular Stamp with Heart ── */}

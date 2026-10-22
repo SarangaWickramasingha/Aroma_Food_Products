@@ -15,7 +15,7 @@ function Home({ nextpage, Storypage }) {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden pt-24 pb-12 sm:pt-28"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-12"
     >
       {/* Background */}
       <div
@@ -28,7 +28,7 @@ function Home({ nextpage, Storypage }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
 
       {/* Main Hero Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center gap-10 px-6 sm:px-10 lg:flex-row lg:justify-between lg:gap-8 lg:px-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center gap-8 px-5 sm:gap-10 sm:px-10 lg:flex-row lg:justify-between lg:gap-8 lg:px-16">
         {/* Left: Text Info */}
         <div className="fade-slide-in w-full lg:max-w-2xl">
           <Description
@@ -54,9 +54,9 @@ function Home({ nextpage, Storypage }) {
       </div>
 
       {/* Bottom Trust Bar */}
-      <div className="relative z-10 mx-auto mt-6 w-full max-w-7xl px-6 sm:px-10 lg:px-16">
-        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/15 pt-6 md:flex-row">
-          <div className="flex items-center gap-3 text-xs font-semibold text-white/80">
+      <div className="relative z-10 mx-auto mt-6 w-full max-w-7xl px-5 sm:px-10 lg:px-16">
+        <div className="flex flex-col items-center justify-between gap-5 border-t border-white/15 pt-6 md:flex-row">
+          <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 text-center text-[11px] font-semibold text-white/80 sm:text-xs">
             <span className="h-2 w-2 rounded-full bg-brand-red" />
             {homeTrustBar.items.map(({ id, text }, index) => (
               <Fragment key={id}>

@@ -24,14 +24,14 @@ const Footer = ({
   };
 
   return (
-    <footer className="relative bg-espresso-950 text-white pt-20 pb-10 overflow-hidden border-t border-white/10">
+    <footer className="relative bg-espresso-950 text-white pt-14 pb-8 overflow-hidden border-t border-white/10 sm:pt-20 sm:pb-10">
       {/* Background ambient lighting */}
       <div className="absolute top-0 left-1/4 -z-0 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 -z-0 h-96 w-96 rounded-full bg-brand-amber/10 blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-10 lg:px-16">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 gap-10 pb-12 border-b border-white/10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-4 lg:pb-16">
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-2">
             <button

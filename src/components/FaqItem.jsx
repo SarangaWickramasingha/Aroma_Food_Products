@@ -15,10 +15,10 @@ function FaqItem({ question, answer, isOpen = false, onToggle, className = "" })
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full cursor-pointer items-center justify-between p-4 text-left font-semibold text-sm sm:text-base hover:text-gold-soft"
+        className="flex w-full cursor-pointer items-center justify-between gap-3 p-4 text-left font-semibold text-sm sm:text-base hover:text-gold-soft"
       >
         <span>{question}</span>
-        <span className="transition-transform duration-300">
+        <span className="shrink-0 transition-transform duration-300">
           {isOpen ? <Minus size={18} /> : <Plus size={18} />}
         </span>
       </button>

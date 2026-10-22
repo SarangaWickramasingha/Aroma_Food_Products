@@ -12,7 +12,7 @@ const BlogCard = ({ blog, onRead }) => {
         <img
           src={blog.image}
           alt={blog.title}
-          className="h-[230px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="h-[210px] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[230px]"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -30,7 +30,7 @@ const BlogCard = ({ blog, onRead }) => {
       </div>
 
       {/* Content Body */}
-      <div className="flex flex-1 flex-col justify-between p-6">
+      <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
         <div>
           {/* Date & Author */}
           <div className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-espresso-400">

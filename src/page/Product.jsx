@@ -12,12 +12,12 @@ const Product = forwardRef(({ Storypage }, ref) => {
     <section
       id="product"
       ref={ref}
-      className="flex min-h-screen flex-col items-center justify-center px-6 py-20 transition-colors duration-700 sm:px-10 lg:px-16"
+      className="flex min-h-screen flex-col items-center justify-center px-5 py-16 transition-colors duration-700 sm:px-10 sm:py-20 lg:px-16"
       style={{ backgroundColor: coffeeProduct.bg }}
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section Header & Subtitle */}
-        <div className="mb-14 text-center">
+        <div className="mb-10 text-center sm:mb-14">
           <p className="eyebrow text-brand-red">
             {ProductSection.eyebrow}
           </p>
@@ -28,7 +28,7 @@ const Product = forwardRef(({ Storypage }, ref) => {
         </div>
 
         {/* Product Content Display Grid */}
-        <div className="flex w-full flex-col items-center justify-between gap-12 lg:flex-row lg:items-center lg:gap-14">
+        <div className="flex w-full flex-col items-center justify-between gap-10 sm:gap-12 lg:flex-row lg:items-center lg:gap-14">
           {/* Left: Interactive Specs & Stats Card */}
           <div className="fade-slide-in flex w-full justify-center lg:w-[38%]">
             <SlideInfo product={coffeeProduct} />

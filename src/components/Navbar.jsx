@@ -24,6 +24,29 @@ const Navbar = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock the page, support Escape, and reset the drawer when resizing to desktop.
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setMenuOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuOpen]);
+
   const handleNav = (fn) => {
     setMenuOpen(false);
     fn?.();
@@ -55,15 +78,15 @@ const Navbar = ({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-espresso-900/90 backdrop-blur-md py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/10'
-          : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5 sm:py-6'
+          ? 'bg-espresso-900/90 backdrop-blur-md py-2.5 sm:py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.3)] border-b border-white/10'
+          : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-4 sm:py-6'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 sm:gap-3 sm:px-10 lg:px-16">
         {/* Brand Logo */}
         <button
           onClick={() => handleNav(scrollToHome)}
-          className="group flex items-center text-left focus:outline-none cursor-pointer"
+          className="group flex shrink-0 items-center text-left focus:outline-none cursor-pointer"
           aria-label={site.brand.logoHomeAriaLabel}
         >
           <Logo className="transition-transform duration-300 group-hover:scale-[1.03] origin-left" />
@@ -88,7 +111,7 @@ const Navbar = ({
         </nav>
 
         {/* Mobile Hamburger Button */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3 lg:hidden">
           <CtaButton onClick={() => handleNav(scrollToContact)}>
             {navCta.label}
           </CtaButton>
@@ -96,9 +119,10 @@ const Navbar = ({
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            aria-label={navCta.drawerAriaLabel}
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
-            className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl bg-white/10 backdrop-blur-md transition-colors hover:bg-white/20 focus:outline-none border border-white/15"
+            aria-controls="mobile-menu"
+            className="flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl bg-white/10 backdrop-blur-md transition-colors hover:bg-white/20 focus:outline-none border border-white/15"
           >
             <span
               className={`h-0.5 w-5 bg-white transition-all duration-300 ${
@@ -121,22 +145,33 @@ const Navbar = ({
 
       {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="fade-slide-in mx-4 mt-3 flex flex-col gap-2 rounded-2xl border border-white/15 bg-espresso-900/95 p-5 text-white shadow-2xl backdrop-blur-2xl lg:hidden">
-          {mobileLinks.map(({ title, section, target }) => (
-            <button
-              key={section}
-              onClick={() => handleNav(target)}
-              className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
-                activeSection === section
-                  ? 'bg-brand-red/20 text-gold-soft font-semibold'
-                  : 'hover:bg-white/10'
-              }`}
-            >
-              <span>{title}</span>
-              <ArrowRight size={16} />
-            </button>
-          ))}
-        </div>
+        <>
+          <div
+            className="fixed inset-0 z-0 bg-black/50 backdrop-blur-sm lg:hidden"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div
+            id="mobile-menu"
+            className="fade-slide-in relative z-10 mx-4 mt-3 flex max-h-[calc(100dvh-6rem)] flex-col gap-2 overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-espresso-900/95 p-4 text-white shadow-2xl backdrop-blur-2xl sm:mx-6 sm:p-5 lg:hidden"
+          >
+            {mobileLinks.map(({ title, section, target }) => (
+              <button
+                key={section}
+                type="button"
+                onClick={() => handleNav(target)}
+                className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-[16px] font-medium transition ${
+                  activeSection === section
+                    ? 'bg-brand-red/20 text-gold-soft font-semibold'
+                    : 'hover:bg-white/10'
+                }`}
+              >
+                <span>{title}</span>
+                <ArrowRight size={16} />
+              </button>
+            ))}
+          </div>
+        </>
       )}
     </header>
   );

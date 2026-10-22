@@ -47,13 +47,13 @@ const LogoMark = ({ className = '', title = site.brand.logoAlt }) => (
  * "~Majestic Taste~" tagline from the original artwork.
  */
 const Logo = ({ className = '', markClassName = '', title = site.brand.logoAlt }) => (
-  <span className={`flex items-center gap-3 ${className}`}>
-    <LogoMark className={`h-11 w-auto shrink-0 text-white drop-shadow-md ${markClassName}`} title={title} />
+  <span className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
+    <LogoMark className={`h-9 w-auto shrink-0 text-white drop-shadow-md sm:h-11 ${markClassName}`} title={title} />
     <span className="flex flex-col">
-      <span className="block font-serif text-[22px] font-extrabold leading-none tracking-[0.28em] text-white drop-shadow-md">
+      <span className="block font-serif text-[18px] font-extrabold leading-none tracking-[0.22em] text-white drop-shadow-md sm:text-[22px] sm:tracking-[0.28em]">
         {site.brand.wordmark}
       </span>
-      <span className="-mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.3em] text-gold-soft">
+      <span className="-mt-0.5 hidden text-[9px] font-semibold uppercase tracking-[0.3em] text-gold-soft sm:block">
         {site.brand.tagline}
       </span>
     </span>
