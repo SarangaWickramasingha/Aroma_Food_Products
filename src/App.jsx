@@ -8,6 +8,7 @@ import Product from './page/Product';
 import Story from './page/Story';
 import Blog from './page/Blog';
 import Contact from './page/Contact';
+import Seo from './components/Seo';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -65,64 +66,72 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-coffee-bg text-espresso-900 font-sans">
-      {/* Global Fixed Floating Navigation */}
-      <Navbar
-        scrollToHome={scrollToHome}
-        scrollToProduct={scrollToProduct}
-        scrollToStory={scrollToStory}
-        scrollToBlog={scrollToBlog}
-        scrollToContact={scrollToContact}
-        activeSection={activeSection}
+    <>
+      <Seo
+        title="Aroma Food Products | Pure Ceylon Coffee & Gourmet Snacks"
+        description="Discover premium Ceylon coffee, artisanal snacks, and the story behind Aroma Food Products."
+        path="/"
       />
 
-      {/* Main Pages */}
-      <main>
-        <div ref={homeRef}>
-          <Home
-            nextpage={scrollToProduct}
+      <div className="relative min-h-screen overflow-x-clip bg-coffee-bg text-espresso-900 font-sans">
+        {/* Global Fixed Floating Navigation */}
+        <Navbar
+          scrollToHome={scrollToHome}
+          scrollToProduct={scrollToProduct}
+          scrollToStory={scrollToStory}
+          scrollToBlog={scrollToBlog}
+          scrollToContact={scrollToContact}
+          activeSection={activeSection}
+        />
+
+        {/* Main Pages */}
+        <main>
+          <div ref={homeRef}>
+            <Home
+              nextpage={scrollToProduct}
+              Storypage={scrollToStory}
+            />
+          </div>
+
+          <Product
+            ref={productRef}
             Storypage={scrollToStory}
           />
-        </div>
 
-        <Product
-          ref={productRef}
-          Storypage={scrollToStory}
+          <Story
+            ref={storyRef}
+          />
+
+          <Blog
+            ref={blogRef}
+          />
+
+          <Contact
+            ref={contactRef}
+          />
+        </main>
+
+        {/* Luxury Footer */}
+        <Footer
+          scrollToHome={scrollToHome}
+          scrollToProduct={scrollToProduct}
+          scrollToStory={scrollToStory}
+          scrollToBlog={scrollToBlog}
+          scrollToContact={scrollToContact}
         />
 
-        <Story
-          ref={storyRef}
-        />
-
-        <Blog
-          ref={blogRef}
-        />
-
-        <Contact
-          ref={contactRef}
-        />
-      </main>
-
-      {/* Luxury Footer */}
-      <Footer
-        scrollToHome={scrollToHome}
-        scrollToProduct={scrollToProduct}
-        scrollToStory={scrollToStory}
-        scrollToBlog={scrollToBlog}
-        scrollToContact={scrollToContact}
-      />
-
-      {/* Floating Back to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToHome}
-          aria-label="Scroll back to top"
-          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-brand-red text-white shadow-2xl transition-all duration-300 hover:bg-brand-red-hover hover:scale-110 active:scale-95 focus:outline-none"
-        >
-          <ArrowUp size={20} strokeWidth={2.5} />
-        </button>
-      )}
-    </div>
+        {/* Floating Back to Top Button */}
+        {showScrollTop && (
+          <button
+            onClick={scrollToHome}
+            aria-label="Scroll back to top"
+            className="fixed bottom-6 right-6 z-40 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-brand-red text-white shadow-2xl transition-all duration-300 hover:bg-brand-red-hover hover:scale-110 active:scale-95 focus:outline-none"
+          >
+            <ArrowUp size={20} strokeWidth={2.5} />
+          </button>
+        )}
+      </div>
+    </>
   );
 }
 

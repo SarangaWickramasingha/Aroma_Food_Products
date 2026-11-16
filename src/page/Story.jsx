@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import StoryCard from "../components/StoryCard";
+import Seo from "../components/Seo";
 import { StoryData, StorySection } from "../data/Storydetails";
 import { activeProductId, selectById } from "../data/site";
 
@@ -7,69 +8,77 @@ const Story = forwardRef((props, ref) => {
   const storyCards = selectById(StoryData, activeProductId);
 
   return (
-    <section
-      id="story"
-      ref={ref}
-      className="relative flex min-h-screen flex-col items-center overflow-x-hidden px-5 py-16 transition-colors duration-700 sm:px-10 sm:py-24 lg:px-16 bg-coffee-bg"
-    >
-      {/* Decorative ambient background accents */}
-      <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-brand-red/5 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-20 -right-20 h-80 w-80 rounded-full bg-brand-amber/5 blur-3xl" />
+    <>
+      <Seo
+        title="Our Craft | Aroma Food Products"
+        description="Learn the story behind our Ceylon coffee heritage, sourcing, roasting, and the craft that defines Aroma Food Products."
+        path="/story"
+      />
 
-      {/* Page Title Header */}
-      <div className="mb-10 max-w-2xl text-center sm:mb-16">
-        <p className="eyebrow text-brand-red">
-          {StorySection.eyebrow}
-        </p>
-        <h2 className="heading-serif tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
-          {StorySection.heading}
-        </h2>
-        <p className="mt-3 text-sm sm:text-base text-espresso-800/70">
-          {StorySection.intro}
-        </p>
-        <div className="divider-bar mx-auto mt-4 rounded-full" />
-      </div>
+      <section
+        id="story"
+        ref={ref}
+        className="relative flex min-h-screen flex-col items-center overflow-x-hidden px-5 py-16 transition-colors duration-700 sm:px-10 sm:py-24 lg:px-16 bg-coffee-bg"
+      >
+        {/* Decorative ambient background accents */}
+        <div className="pointer-events-none absolute top-20 -left-20 h-72 w-72 rounded-full bg-brand-red/5 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-20 -right-20 h-80 w-80 rounded-full bg-brand-amber/5 blur-3xl" />
 
-      {/* Cards Layout Container */}
-      <div className="relative flex w-full max-w-5xl flex-col items-center gap-10 sm:gap-16">
-        {/* Subtle center timeline line for desktop */}
-        <div className="pointer-events-none absolute top-10 bottom-10 left-1/2 -ml-[1px] hidden w-[2px] bg-gradient-to-b from-transparent via-black/15 to-transparent md:block" />
+        {/* Page Title Header */}
+        <div className="mb-10 max-w-2xl text-center sm:mb-16">
+          <p className="eyebrow text-brand-red">
+            {StorySection.eyebrow}
+          </p>
+          <h2 className="heading-serif tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
+            {StorySection.heading}
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-espresso-800/70">
+            {StorySection.intro}
+          </p>
+          <div className="divider-bar mx-auto mt-4 rounded-full" />
+        </div>
 
-        {storyCards.map((card, index) => {
-          const rotationAngle = index % 2 === 0 ? -3 : 3;
-          const alignLeft = index % 2 === 0;
+        {/* Cards Layout Container */}
+        <div className="relative flex w-full max-w-5xl flex-col items-center gap-10 sm:gap-16">
+          {/* Subtle center timeline line for desktop */}
+          <div className="pointer-events-none absolute top-10 bottom-10 left-1/2 -ml-px hidden w-0.5 bg-linear-to-b from-transparent via-black/15 to-transparent md:block" />
 
-          return (
-            <div
-              key={card.id}
-              className={`fade-slide-in relative flex w-full ${
-                alignLeft
-                  ? "justify-center md:justify-start md:pl-10 lg:pl-16"
-                  : "justify-center md:justify-end md:pr-10 lg:pr-16"
-              }`}
-            >
-              {/* Milestone Node in timeline center */}
-              <div className="absolute top-10 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-espresso-800 text-[11px] font-bold text-white ring-4 ring-white shadow-md">
-                  {index + 1}
-                </span>
+          {storyCards.map((card, index) => {
+            const rotationAngle = index % 2 === 0 ? -3 : 3;
+            const alignLeft = index % 2 === 0;
+
+            return (
+              <div
+                key={card.id}
+                className={`fade-slide-in relative flex w-full ${
+                  alignLeft
+                    ? "justify-center md:justify-start md:pl-10 lg:pl-16"
+                    : "justify-center md:justify-end md:pr-10 lg:pr-16"
+                }`}
+              >
+                {/* Milestone Node in timeline center */}
+                <div className="absolute top-10 left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-espresso-800 text-[11px] font-bold text-white ring-4 ring-white shadow-md">
+                    {index + 1}
+                  </span>
+                </div>
+
+                <StoryCard
+                  image={card.img}
+                  title={card.title}
+                  subtitle={card.subtitle}
+                  tag={card.tag}
+                  stat={card.stat}
+                  description={card.description}
+                  rotation={rotationAngle}
+                  step={String(index + 1).padStart(2, "0")}
+                />
               </div>
-
-              <StoryCard
-                image={card.img}
-                title={card.title}
-                subtitle={card.subtitle}
-                tag={card.tag}
-                stat={card.stat}
-                description={card.description}
-                rotation={rotationAngle}
-                step={String(index + 1).padStart(2, "0")}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </section>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 });
 

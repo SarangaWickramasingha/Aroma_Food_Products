@@ -3,62 +3,71 @@ import ProductImg from "../components/ProductImg";
 import SlideInfo from "../components/SideInfo";
 import Pdetails, { ProductSection } from "../data/Pdetails";
 import Description from "../components/Description";
+import Seo from "../components/Seo";
 import { activeProductId, selectById } from "../data/site";
 
 const Product = forwardRef(({ Storypage }, ref) => {
   const coffeeProduct = selectById(Pdetails, activeProductId);
 
   return (
-    <section
-      id="product"
-      ref={ref}
-      className="flex min-h-screen flex-col items-center justify-center px-5 py-16 transition-colors duration-700 sm:px-10 sm:py-20 lg:px-16"
-      style={{ backgroundColor: coffeeProduct.bg }}
-    >
-      <div className="mx-auto w-full max-w-7xl">
-        {/* Section Header & Subtitle */}
-        <div className="mb-10 text-center sm:mb-14">
-          <p className="eyebrow text-brand-red">
-            {ProductSection.eyebrow}
-          </p>
-          <h2 className="mt-2 heading-serif font-extrabold text-3xl sm:text-4xl md:text-5xl text-espresso-900">
-            {ProductSection.heading}
-          </h2>
-          <div className="divider-bar mx-auto mt-3 rounded-full" />
-        </div>
+    <>
+      <Seo
+        title="Coffee Collection | Aroma Food Products"
+        description="Explore Aroma's premium Ceylon coffee collection, crafted for rich taste, smooth aroma, and exceptional quality."
+        path="/product"
+      />
 
-        {/* Product Content Display Grid */}
-        <div className="flex w-full flex-col items-center justify-between gap-10 sm:gap-12 lg:flex-row lg:items-center lg:gap-14">
-          {/* Left: Interactive Specs & Stats Card */}
-          <div className="fade-slide-in flex w-full justify-center lg:w-[38%]">
-            <SlideInfo product={coffeeProduct} />
+      <section
+        id="product"
+        ref={ref}
+        className="flex min-h-screen flex-col items-center justify-center px-5 py-16 transition-colors duration-700 sm:px-10 sm:py-20 lg:px-16"
+        style={{ backgroundColor: coffeeProduct.bg }}
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          {/* Section Header & Subtitle */}
+          <div className="mb-10 text-center sm:mb-14">
+            <p className="eyebrow text-brand-red">
+              {ProductSection.eyebrow}
+            </p>
+            <h2 className="mt-2 heading-serif font-extrabold text-3xl sm:text-4xl md:text-5xl text-espresso-900">
+              {ProductSection.heading}
+            </h2>
+            <div className="divider-bar mx-auto mt-3 rounded-full" />
           </div>
 
-          {/* Right: Headline, Description & Dynamic Product Mockup */}
-          <div className="fade-slide-in flex w-full flex-col items-center gap-8 lg:w-[58%] lg:items-start">
-            <div className="w-full text-left">
-              <Description
-                header={coffeeProduct.tagline}
-                des={coffeeProduct.description}
-                btn={Storypage}
-                btnText={ProductSection.ctaText}
-                theam="dark"
-                label={coffeeProduct.category}
-                packSizes={coffeeProduct.packSizes}
-              />
+          {/* Product Content Display Grid */}
+          <div className="flex w-full flex-col items-center justify-between gap-10 sm:gap-12 lg:flex-row lg:items-center lg:gap-14">
+            {/* Left: Interactive Specs & Stats Card */}
+            <div className="fade-slide-in flex w-full justify-center lg:w-[38%]">
+              <SlideInfo product={coffeeProduct} />
             </div>
 
-            <div className="w-full flex justify-center lg:justify-start">
-              <ProductImg
-                image={coffeeProduct.productImage}
-                alt={coffeeProduct.imageAlt}
-                badge={ProductSection.badge}
-              />
+            {/* Right: Headline, Description & Dynamic Product Mockup */}
+            <div className="fade-slide-in flex w-full flex-col items-center gap-8 lg:w-[58%] lg:items-start">
+              <div className="w-full text-left">
+                <Description
+                  header={coffeeProduct.tagline}
+                  des={coffeeProduct.description}
+                  btn={Storypage}
+                  btnText={ProductSection.ctaText}
+                  theam="dark"
+                  label={coffeeProduct.category}
+                  packSizes={coffeeProduct.packSizes}
+                />
+              </div>
+
+              <div className="w-full flex justify-center lg:justify-start">
+                <ProductImg
+                  image={coffeeProduct.productImage}
+                  alt={coffeeProduct.imageAlt}
+                  badge={ProductSection.badge}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 });
 
