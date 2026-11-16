@@ -27,7 +27,7 @@ const ArticleModal = ({ article, onClose }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="card relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl p-5 shadow-2xl sm:p-10 text-espresso-900"
+        className="card relative max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-3xl p-5 shadow-2xl sm:p-8 lg:p-10 text-espresso-900"
       >
         {/* Close Button */}
         <button
@@ -55,28 +55,13 @@ const ArticleModal = ({ article, onClose }) => {
           {article.title}
         </h2>
 
-        {/* Author Info */}
-        <div className="mt-4 flex items-center gap-3 border-b border-black/10 pb-5">
-          {article.authorAvatar && (
-            <img
-              src={article.authorAvatar}
-              alt={article.author}
-              className="h-10 w-10 rounded-full object-cover shadow-sm"
-            />
-          )}
-          <div>
-            <p className="text-sm font-bold text-espresso-900">{article.author}</p>
-            <p className="text-xs text-espresso-600">{article.date} · {article.authorRole || BlogSection.fallbacks.authorRole}</p>
-          </div>
-        </div>
-
         {/* Hero Image */}
         {article.image && (
-          <div className="mt-6 overflow-hidden rounded-2xl">
+          <div className="mt-6 overflow-hidden rounded-2xl bg-[#f7f1ed]">
             <img
               src={article.image}
               alt={article.title}
-              className="h-48 w-full object-cover sm:h-64"
+              className="h-auto max-h-[420px] w-full object-contain"
             />
           </div>
         )}
@@ -96,6 +81,20 @@ const ArticleModal = ({ article, onClose }) => {
             <p>{article.excerpt}</p>
           )}
         </div>
+
+        {/* Reference URL */}
+        {article.referenceUrl && (
+          <div className="mt-8 rounded-2xl border border-brand-red/20 bg-brand-red/5 p-4">
+            <a
+              href={article.referenceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block text-sm font-semibold text-brand-red underline underline-offset-4 hover:text-brand-red/80"
+            >
+              Watch a video
+            </a>
+          </div>
+        )}
 
         {/* Bottom CTA */}
         <div className="mt-8 flex flex-col items-start gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center sm:justify-between">

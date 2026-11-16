@@ -35,8 +35,6 @@ const BlogCard = ({ blog, onRead }) => {
           {/* Date & Author */}
           <div className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-wider text-espresso-400">
             <span>{blog.date}</span>
-            <span>•</span>
-            <span>By {blog.author}</span>
           </div>
 
           {/* Title */}

@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import BlogCard from "../components/BlogCard";
 import ArticleModal from "../components/ArticleModal";
-import Blogdetails, { BlogSection } from "../data/Blogdetails";
+import recipeJournalEntries from "../data/RecipeJournalData";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const categories = BlogSection.categories;
+const categories = ["All", "Recipes & Pairing"];
 
 const Blog = forwardRef((props, ref) => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
@@ -17,8 +17,8 @@ const Blog = forwardRef((props, ref) => {
 
   const filteredBlogs =
     selectedCategory === categories[0]
-      ? Blogdetails
-      : Blogdetails.filter((b) => b.category === selectedCategory);
+      ? recipeJournalEntries
+      : recipeJournalEntries.filter((b) => b.category === selectedCategory);
 
   return (
     <section
@@ -30,13 +30,13 @@ const Blog = forwardRef((props, ref) => {
         {/* Header */}
         <div className="mb-10 text-center sm:mb-12">
           <p className="eyebrow text-brand-red">
-            {BlogSection.eyebrow}
+            Brewing Insights & Stories
           </p>
           <h2 className="mt-2 heading-serif font-extrabold tracking-wide text-3xl sm:text-4xl md:text-5xl text-espresso-900">
-            {BlogSection.heading}
+            Aroma Journal & Recipes
           </h2>
           <p className="mt-3 text-sm text-espresso-800/70 max-w-lg mx-auto">
-            {BlogSection.intro}
+            Explore eight simple, delicious recipes made with Aroma ground coffee — from comforting cappuccinos to indulgent desserts and savoury spice rubs.
           </p>
           <div className="divider-bar mx-auto mt-4 rounded-full" />
 
@@ -72,7 +72,7 @@ const Blog = forwardRef((props, ref) => {
             pagination={{ clickable: true }}
             navigation
             autoplay={{ delay: 5000, disableOnInteraction: true }}
-            className="!pb-14 sm:!pb-16"
+            className="pb-14! sm:pb-16!"
           >
             {filteredBlogs.map((blog) => (
               <SwiperSlide key={blog.id} className="flex justify-center h-auto">
