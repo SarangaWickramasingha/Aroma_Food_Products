@@ -41,7 +41,7 @@ export async function sendContactEmail(payload = {}, env = process.env) {
   const apiKey = clean(env.BREVO_API_KEY);
   const toEmail = clean(env.CONTACT_TO_EMAIL);
   const fromEmail = clean(env.CONTACT_FROM_EMAIL);
-  const fromName = clean(env.CONTACT_FROM_NAME) || "Aroma Food Products";
+  const fromName = clean(env.CONTACT_FROM_NAME) || "No reply";
 
   if (
     !apiKey ||
