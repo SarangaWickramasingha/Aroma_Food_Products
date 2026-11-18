@@ -14,16 +14,42 @@ import SocialCards from "../components/SocialCards";
 
 const Contact = forwardRef((props, ref) => {
   const [form, setForm] = useState(emptyForm);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState("");
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (status === "error") setStatus("idle");
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("sending");
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const message = Array.isArray(data.errors)
+          ? data.errors[0]
+          : data.error;
+        throw new Error(message ?? contactSection.errorMessage);
+      }
+
+      setForm(emptyForm);
+      setStatus("success");
+    } catch (err) {
+      setError(err.message || contactSection.errorMessage);
+      setStatus("error");
+    }
   };
 
   const copyEmail = () => {
@@ -189,7 +215,10 @@ const Contact = forwardRef((props, ref) => {
                     <button
                       key={id}
                       type="button"
-                      onClick={() => setForm({ ...form, subject: label })}
+                      onClick={() => {
+                        setForm({ ...form, subject: label });
+                        if (status === "error") setStatus("idle");
+                      }}
                       className={`cursor-pointer rounded-xl px-3.5 py-2.5 text-xs font-semibold transition-all inline-flex items-center gap-1.5 ${
                         form.subject === label
                           ? "bg-brand-red text-white shadow-md ring-1 ring-white/50"
@@ -225,8 +254,11 @@ const Contact = forwardRef((props, ref) => {
 
               {/* Submit Confirmation & Button */}
               <div className="mt-8 flex flex-col items-stretch gap-3 sm:items-end">
-                {submitted ? (
-                  <div className="w-full rounded-2xl bg-emerald-500/20 border border-emerald-500/30 p-4 text-center">
+                {status === "success" ? (
+                  <div
+                    className="w-full rounded-2xl bg-emerald-500/20 border border-emerald-500/30 p-4 text-center"
+                    role="status"
+                  >
                     <p className="text-sm font-bold text-emerald-300 inline-flex items-center justify-center gap-2">
                       <CheckCircle2 size={15} />
                       {contactSection.successMessage}
@@ -234,7 +266,8 @@ const Contact = forwardRef((props, ref) => {
                     <button
                       type="button"
                       onClick={() => {
-                        setSubmitted(false);
+                        setStatus("idle");
+                        setError("");
                         setForm(emptyForm);
                       }}
                       className="mt-2 text-xs underline text-white/70 hover:text-white"
@@ -243,13 +276,26 @@ const Contact = forwardRef((props, ref) => {
                     </button>
                   </div>
                 ) : (
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-full px-9 sm:w-auto"
-                  >
-                    Submit Inquiry
-                    <Send size={16} className="-rotate-12" />
-                  </button>
+                  <>
+                    {status === "error" ? (
+                      <div
+                        className="w-full rounded-2xl bg-red-500/20 border border-red-500/30 p-4 text-center text-sm text-red-200"
+                        role="alert"
+                      >
+                        {error || contactSection.errorMessage}
+                      </div>
+                    ) : null}
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="btn btn-primary w-full px-9 sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {status === "sending"
+                        ? contactSection.sendingLabel
+                        : contactSection.submitLabel}
+                      <Send size={16} className="-rotate-12" />
+                    </button>
+                  </>
                 )}
               </div>
             </form>

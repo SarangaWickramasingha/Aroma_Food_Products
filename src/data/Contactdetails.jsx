@@ -27,6 +27,10 @@ export const contactSection = {
   successMessage:
     "Message received! Our master roaster team will contact you shortly.",
   resendCta: "Send another inquiry",
+  submitLabel: "Submit Inquiry",
+  sendingLabel: "Sending...",
+  errorMessage:
+    "Sorry, we couldn't send your message. Please try again or email us directly.",
   fieldLabels: {
     firstName: "First Name",
     lastName: "Last Name",

@@ -20,7 +20,7 @@ export const site = {
   },
 
   contact: {
-    email: "aromafoodproduct@gmail.com",
+    email: "aromamjofficial@gmail.com",
     /**
      * The single source of truth for the business phone. wa.me requires the
      * number in international form with no symbols, so store it that way and
