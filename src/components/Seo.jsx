@@ -6,7 +6,7 @@ export default function Seo({
   title,
   description,
   path = '/',
-  image = `${SITE_URL}/og-image.png`,
+  image = `${SITE_URL}/logo.png`,
   noindex = false,
 }) {
   const canonicalUrl = `${SITE_URL}${path}`;

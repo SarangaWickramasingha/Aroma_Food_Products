@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import StoryCard from "../components/StoryCard";
-import Seo from "../components/Seo";
 import { StoryData, StorySection } from "../data/Storydetails";
 import { activeProductId, selectById } from "../data/site";
 
@@ -9,12 +8,6 @@ const Story = forwardRef((props, ref) => {
 
   return (
     <>
-      <Seo
-        title="Our Craft | Aroma Food Products"
-        description="Learn the story behind our Ceylon coffee heritage, sourcing, roasting, and the craft that defines Aroma Food Products."
-        path="/story"
-      />
-
       <section
         id="story"
         ref={ref}

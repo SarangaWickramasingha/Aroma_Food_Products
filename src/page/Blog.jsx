@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import BlogCard from "../components/BlogCard";
 import ArticleModal from "../components/ArticleModal";
-import Seo from "../components/Seo";
 import recipeJournalEntries from "../data/RecipeJournalData";
 
 import "swiper/css";
@@ -23,12 +22,6 @@ const Blog = forwardRef((props, ref) => {
 
   return (
     <>
-      <Seo
-        title="Aroma Journal & Recipes | Coffee Ideas & Craft"
-        description="Explore Aroma's recipe journal with coffee drinks, desserts, and savoury ideas made with premium Ceylon coffee."
-        path="/blog"
-      />
-
       <section
         id="blog"
         ref={ref}

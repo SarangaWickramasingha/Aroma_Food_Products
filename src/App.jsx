@@ -68,8 +68,8 @@ function App() {
   return (
     <>
       <Seo
-        title="Aroma Food Products | Pure Ceylon Coffee & Gourmet Snacks"
-        description="Discover premium Ceylon coffee, artisanal snacks, and the story behind Aroma Food Products."
+        title="Aroma Food Products | Pure Ceylon Coffee, Craft & Recipes"
+        description="Discover premium Ceylon artisan coffee, our highland roasting craft, and coffee recipes from Aroma Food Products in Ratnapura, Sri Lanka."
         path="/"
       />
 

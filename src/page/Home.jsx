@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { Slides } from "../data/slides";
 import ProductImg from "../components/ProductImg";
 import Description from "../components/Description";
-import Seo from "../components/Seo";
 import {
   homeTrustBar,
   homeTrustBadges,
@@ -15,12 +14,6 @@ function Home({ nextpage, Storypage }) {
 
   return (
     <>
-      <Seo
-        title="Aroma Food Products | Premium Ceylon Coffee"
-        description="Shop premium Ceylon coffee and gourmet snacks from Aroma Food Products, crafted with heritage, quality, and bold flavour."
-        path="/"
-      />
-
       <section
         id="home"
         className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-12"

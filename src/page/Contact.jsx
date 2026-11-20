@@ -1,6 +1,5 @@
 import { forwardRef, useState } from "react";
 import { Mail, MapPin, CheckCircle2, Send } from "lucide-react";
-import Seo from "../components/Seo";
 import contactBg from "../assets/Contactus.png";
 import {
   subjects,
@@ -60,12 +59,6 @@ const Contact = forwardRef((props, ref) => {
 
   return (
     <>
-      <Seo
-        title="Contact Aroma Food Products | Coffee_inquiries"
-        description="Get in touch with Aroma Food Products for coffee inquiries, partnerships, and custom food product enquiries."
-        path="/contact"
-      />
-
       <section
         id="contact"
         ref={ref}

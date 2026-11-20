@@ -3,7 +3,6 @@ import ProductImg from "../components/ProductImg";
 import SlideInfo from "../components/SideInfo";
 import Pdetails, { ProductSection } from "../data/Pdetails";
 import Description from "../components/Description";
-import Seo from "../components/Seo";
 import { activeProductId, selectById } from "../data/site";
 
 const Product = forwardRef(({ Storypage }, ref) => {
@@ -11,12 +10,6 @@ const Product = forwardRef(({ Storypage }, ref) => {
 
   return (
     <>
-      <Seo
-        title="Coffee Collection | Aroma Food Products"
-        description="Explore Aroma's premium Ceylon coffee collection, crafted for rich taste, smooth aroma, and exceptional quality."
-        path="/product"
-      />
-
       <section
         id="product"
         ref={ref}
