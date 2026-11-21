@@ -1,4 +1,11 @@
 import img1 from "../assets/testimg1.jpg";
+import storyCoffeeHarvest from "../assets/story-coffee-harvest.jpg";
+import storyCoffeeRoasting from "../assets/story-coffee-roasting.jpg";
+import storyCoffeePackaging from "../assets/story-coffee-packaging.jpg";
+import storyChipsSourcing from "../assets/story-chips-sourcing.jpg";
+import storyChipsSlicing from "../assets/story-chips-slicing.jpg";
+import storyChipsFrying from "../assets/story-chips-frying.jpg";
+import storyChipsSpicing from "../assets/story-chips-spicing.jpg";
 
 export const StoryData = {
   coffee: [
@@ -7,7 +14,7 @@ export const StoryData = {
       title: "Hand-Picked at Dawn",
       subtitle: "Highland Harvest",
       tag: "Harvesting",
-      img: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=800&q=80",
+      img: storyCoffeeHarvest,
       description: "Our story begins in mist-covered mountain plantations. Skilled growers hand-pluck only the ripest ruby-red coffee cherries, ensuring maximum natural sugars and rich flavor development in every bean.",
       stat: "1,400m+ Elevation"
     },
@@ -25,7 +32,7 @@ export const StoryData = {
       title: "Artisan Drum Roasting",
       subtitle: "Mastering the Heat",
       tag: "Roasting",
-      img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80",
+      img: storyCoffeeRoasting,
       description: "Small batches are roasted in cast-iron drum roasters by master roasters who listen for the distinct 'first crack'. Precise airflow and temperature bring out luscious notes of cacao, caramel, and floral aroma.",
       stat: "Small Batches (15kg)"
     },
@@ -34,7 +41,7 @@ export const StoryData = {
       title: "Degassing & Fresh Packing",
       subtitle: "Sealing the Aroma",
       tag: "Packaging",
-      img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80",
+      img: storyCoffeePackaging,
       description: "Immediately after resting, our coffee is nitrogen-flushed and sealed in multi-layer valve pouches to lock in volatile aromatic oils, guaranteeing freshly roasted peak flavor upon opening.",
       stat: "100% Aroma Lock"
     }
@@ -45,7 +52,7 @@ export const StoryData = {
       title: "Farm-Fresh Selection",
       subtitle: "Pure Island Produce",
       tag: "Sourcing",
-      img: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=800&q=80",
+      img: storyChipsSourcing,
       description: "We partner directly with sustainable local farmers to harvest prime golden cassava roots and potatoes at peak maturity, free from synthetic pesticides or harsh chemicals.",
       stat: "Direct Fair Trade"
     },
@@ -54,7 +61,7 @@ export const StoryData = {
       title: "Ultra-Thin Precision Slice",
       subtitle: "Crisp Preparation",
       tag: "Preparation",
-      img: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80",
+      img: storyChipsSlicing,
       description: "Roots are washed in pure mountain water and sliced into razor-thin ribbons that allow rapid heat circulation, ensuring an extraordinarily airy and crisp texture without excess oil absorption.",
       stat: "0.8mm Precision Slice"
     },
@@ -63,7 +70,7 @@ export const StoryData = {
       title: "Kettle Batch Frying",
       subtitle: "Golden Crunch",
       tag: "Cooking",
-      img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=800&q=80",
+      img: storyChipsFrying,
       description: "Slow-cooked in continuous stirred kettle pots using fresh, high-smoke plant oil. Every batch achieves an even, glowing golden amber shade with an acoustic crunch in every bite.",
       stat: "100% Trans-Fat Free"
     },
@@ -72,7 +79,7 @@ export const StoryData = {
       title: "Artisan Spice Tossing",
       subtitle: "Ceylon Herb Symphony",
       tag: "Seasoning",
-      img: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80",
+      img: storyChipsSpicing,
       description: "While still warm, the crisps are tumbled with our signature spice mixture of sun-cured Ceylon chili, roasted curry leaves, and mineral-rich rock salt for an irresistible savory finish.",
       stat: "Secret Heritage Spice"
     }

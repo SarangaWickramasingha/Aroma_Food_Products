@@ -1,13 +1,21 @@
+import blogFrenchPress from "../assets/blog-french-press.jpg";
+import avatarAuthor1 from "../assets/avatar-author-1.jpg";
+import blogHighAltitude from "../assets/blog-high-altitude.jpg";
+import avatarAuthor2 from "../assets/avatar-author-2.jpg";
+import blogPairing from "../assets/blog-pairing.jpg";
+import avatarAuthor3 from "../assets/avatar-author-3.jpg";
+import blogSustainability from "../assets/blog-sustainability.jpg";
+
 const Blogdetails = [
   {
     id: 1,
     category: "Brewing Guide",
-    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
+    image: blogFrenchPress,
     date: "14 Oct 2024",
     readTime: "4 min read",
     author: "Naveen Perera",
     authorRole: "Head of Roasting",
-    authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
+    authorAvatar: avatarAuthor1,
     title: "Mastering the French Press with Ceylon Highland Roast",
     excerpt:
       "Unlock deep caramel undertones and rich crema with our barista-tested French press brewing techniques.",
@@ -28,12 +36,12 @@ Brewing coffee with a French Press is one of the most rewarding ways to experien
   {
     id: 2,
     category: "Behind the Craft",
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
+    image: blogHighAltitude,
     date: "28 Oct 2024",
     readTime: "5 min read",
     author: "Kumari Silva",
     authorRole: "Agronomy Specialist",
-    authorAvatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80",
+    authorAvatar: avatarAuthor2,
     title: "Why High Altitude Matters: The Science of Ceylon Coffee",
     excerpt:
       "Explore how cloud-kissed mountain peaks and mineral volcanic soil create the world's most sought-after coffee beans.",
@@ -53,12 +61,12 @@ At Aroma Food Products, our farmer partnerships prioritize sustainable shade-gro
   {
     id: 3,
     category: "Recipes & Pairing",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+    image: blogPairing,
     date: "12 Nov 2024",
     readTime: "3 min read",
     author: "Chef Dilshan",
     authorRole: "Culinary Consultant",
-    authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+    authorAvatar: avatarAuthor3,
     title: "Sweet & Savory: Pairing Spiced Snacks with Dark Roasts",
     excerpt:
       "Surprise your palate with the unexpected harmony of spicy kettle-cooked cassava crisps and velvety iced coffee.",
@@ -77,12 +85,12 @@ Try this combination at your next afternoon gathering and treat your guests to a
   {
     id: 4,
     category: "Sustainability",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
+    image: blogSustainability,
     date: "05 Dec 2024",
     readTime: "4 min read",
     author: "Naveen Perera",
     authorRole: "Head of Roasting",
-    authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80",
+    authorAvatar: avatarAuthor1,
     title: "Zero Waste in Food Craft: Our Commitment to the Land",
     excerpt:
       "From repurposing coffee husks as organic fertilizer to biodegradable pouch sealing, learn our eco-initiatives.",

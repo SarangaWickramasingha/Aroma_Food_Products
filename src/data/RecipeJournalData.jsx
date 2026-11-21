@@ -6,6 +6,7 @@ import walnutCakeImage from "../assets/Coffee_Walnut Cake.jpg";
 import brownieImage from "../assets/Chocolate_Coffee Brownies.jpg";
 import iceCreamImage from "../assets/Homemade No-Churn Coffee Ice Cream.jpg";
 import bbqRubImage from "../assets/CoffeeBBQ Spice Rub.jpg";
+import avatarAromaTeam from "../assets/avatar-aroma-team.jpg";
 
 const recipeJournalEntries = [
   {
@@ -16,8 +17,7 @@ const recipeJournalEntries = [
     readTime: "4 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Homemade Cappuccino",
     excerpt:
       "A smooth, full-bodied cappuccino made with strong brewed Aroma coffee and silky foam for a café-style start to the day.",
@@ -54,8 +54,7 @@ A cappuccino should taste like coffee, not just warm milk. Brew the coffee stron
     readTime: "4 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Chocolate Café Mocha",
     excerpt:
       "A rich mocha combining strong Aroma coffee, cocoa, and warm milk for a velvety chocolate-and-coffee comfort drink.",
@@ -94,8 +93,7 @@ Use unsweetened cocoa so the coffee flavour stays balanced and the chocolate doe
     readTime: "5 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Vietnamese-Style Iced Coffee",
     excerpt:
       "Bold, sweet, and refreshing, this iced coffee is built on a strong Aroma coffee brew and sweetened condensed milk.",
@@ -131,8 +129,7 @@ The key is a strong brew. Keep the coffee concentrated so it stays flavourful wh
     readTime: "6 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "No-Bake Coffee Tiramisu Cups",
     excerpt:
       "Light mascarpone cream, quickly dipped sponge fingers, and brewed Aroma coffee create an elegant no-bake dessert.",
@@ -178,8 +175,7 @@ Let the coffee cool fully before dipping the sponge fingers. A quick dip keeps t
     readTime: "7 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Coffee & Walnut Cake",
     excerpt:
       "A soft coffee sponge with crunchy walnuts and smooth coffee buttercream for a classic tea-time indulgence.",
@@ -229,8 +225,7 @@ Always strain the brewed coffee before using it. Do not add loose coffee grounds
     readTime: "5 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Chocolate Coffee Brownies",
     excerpt:
       "Dark chocolate and cooled brewed Aroma coffee combine into fudgy brownies with a deeper, richer flavour profile.",
@@ -272,8 +267,7 @@ Use strong, cooled, filtered coffee. Do not add loose grounds to the batter or i
     readTime: "7 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Homemade No-Churn Coffee Ice Cream",
     excerpt:
       "Coffee-infused cream and condensed milk create a smooth, no-machine ice cream with rich Aroma flavour.",
@@ -311,8 +305,7 @@ The long cold infusion draws flavour into the cream, and careful straining keeps
     readTime: "4 min read",
     author: "Aroma Kitchen Team",
     authorRole: "Culinary Curators",
-    authorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
+    authorAvatar: avatarAromaTeam,
     title: "Coffee BBQ Spice Rub",
     excerpt:
       "A deep, roasted coffee spice rub for grilled meat that adds smoky richness and a subtle sweetness to every bite.",
